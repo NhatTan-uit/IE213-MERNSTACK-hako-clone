@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Notice
 
-Check out master branches for mern stack build
+Check out min branches for mern stack build
 
 ## Available Scripts
 
