@@ -31,18 +31,18 @@ Nodemon will automatically restart the server when you make any changes there to
 This project is built based on MERN stack (MongoDB, Express, ReactJs, NodeJs)
 Courses i used:
 
-### 7 parts from 80/20 coding youtube
-MERN STACK | CRUD Bootstrap Blog App PART#1 [https://youtu.be/RdGD6Vt6fW0](https://youtu.be/RdGD6Vt6fW0)
+### 7 parts of MERN Stack from 80/20 coding youtube
+Learn the MERN Stack [https://youtube.com/playlist?list=PL6jnTQwFvrdak_WQ0XK9WKzgbemndQ0rT](https://youtube.com/playlist?list=PL6jnTQwFvrdak_WQ0XK9WKzgbemndQ0rT)
 
 You can find out all 7 parts from the above playlist
 
 ### App clone from Clever Programmer
 
-[https://youtu.be/R_OERlafbmw](https://youtu.be/R_OERlafbmw)
+Build App Clones with ReactJS [https://youtube.com/playlist?list=PL-J2q3Ga50oMQa1JdSJxYoZELwOJAXExP](https://youtube.com/playlist?list=PL-J2q3Ga50oMQa1JdSJxYoZELwOJAXExP)
 
 You can check out more from the above playlist
 
-### Documents from my school Vietnam HoChiMinh UIT
+### Documents from my school - Vietmam HoChiMinh UIT
 
 
 
