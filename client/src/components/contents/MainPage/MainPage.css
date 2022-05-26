@@ -1,0 +1,42 @@
+.mainpage::-webkit-scrollbar {
+    display: none;
+}
+
+.mainpage__background__color {
+    background-color: cornflowerblue;
+}
+
+.mainpage {
+    margin: auto;
+    background-color: pink;
+    height: 100vh;
+    width: 85vw;
+    overflow-y: overlay;
+}
+
+.mainpage__container {
+    margin: 10px 20px;
+    background-color: wheat;
+    display: flex;
+    flex-direction: row;
+}
+
+.mainpage__col__big {
+    background-color: chartreuse;
+    flex: 0.7;
+}
+
+.mainpage__col__small {
+    background-color: aqua;
+    flex: 0.3;
+}
+
+@media screen and (max-width: 700px) {
+    .mainpage__container {
+        flex-direction: column;
+    }
+
+    .mainpage__col__big .mainpage__col__small{
+        flex: 1;
+    }
+}

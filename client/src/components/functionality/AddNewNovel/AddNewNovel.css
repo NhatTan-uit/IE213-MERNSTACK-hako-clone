@@ -1,0 +1,46 @@
+.add__form {
+    min-width: 100px;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.add__form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add__form form h1 {
+    margin: auto;
+}
+
+.add__form form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+.add__form form label {
+    margin: 15px 0px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.add__form form input {
+    padding: 10px;
+}
+
+.add__form form button {
+    padding: 15px 20px;
+    width: 100px;
+    margin: 30px auto;
+    background-color: rgb(87, 87, 225);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add__form form button:hover {
+    background-color: rgb(111, 111, 250);
+}
