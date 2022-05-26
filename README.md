@@ -42,7 +42,7 @@ Build App Clones with ReactJS [https://youtube.com/playlist?list=PL-J2q3Ga50oMQa
 
 You can check out more from the above playlist
 
-### Documents from my school - Vietmam HoChiMinh UIT
+### Documents from my school - Vietnam HoChiMinh UIT
 
 
 
