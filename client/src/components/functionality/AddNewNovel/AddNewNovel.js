@@ -1,14 +1,15 @@
 import React from 'react'
 import { useState } from 'react';
-import '../../contents/MainPage/MainPage.css'
-import './AddNewNovel.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddNewNovel() {
     const [noveltitle, setTitle] = useState('');
     const [novelcontent, setContent] = useState('');
     const [authorname, setAuthorName] = useState('');
     const [novelImage, setNovelImage] = useState('');
+
+    const navigate = useNavigate();
 
     const onChangeFile = e => {
         setNovelImage(e.target.files[0]);
@@ -30,7 +31,10 @@ function AddNewNovel() {
 
         axios
             .post("http://localhost:4000/novels/add", formData)
-            .then(res => alert(res.data))
+            .then(res => {
+                alert(res.data)
+                navigate('/')
+            })
             .catch(err => {
                 console.log(err);
             });

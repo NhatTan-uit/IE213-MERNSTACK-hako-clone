@@ -24,4 +24,7 @@ connection.once("open", () =>
 const novelsRouter = require("./routes/novels");
 app.use("/novels", novelsRouter);
 
+const usersRouter = require("./routes/authentication");
+app.use("/user", usersRouter);
+
 app.listen(port, () => console.log(`Port!: ${port}`));

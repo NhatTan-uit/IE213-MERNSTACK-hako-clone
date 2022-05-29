@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDataLayerValue } from '../../../DataLayer'
 import { Link } from 'react-router-dom';
-import './Novels.css'
 
 
 function Novels() {

@@ -11,11 +11,17 @@ import { Navigate } from 'react-router-dom'
 import NovelChapter from './components/contents/NovelChapter/NovelChapter'
 import AddNewChapter from './components/functionality/AddNewChapter/AddNewChapter'
 import EditChapter from './components/functionality/EditChapter/EditChapter'
+import Login from './components/authentication/Login/Login'
+import Register from './components/authentication/Register/Register'
+import DashBoard from './components/contents/DashBoard/DashBoard'
 
 function MyRoutes() {
   return (
     <Routes>
       <Route path='/' element={<MainPage />} />
+      <Route path='/authentication' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/dashboard' element={<DashBoard />} />
       <Route path='/add' element={<AddNewNovel />} />
       <Route path='/add/:id' element={<AddNewChapter />} />
       <Route path='/novels/:id' element={<Novel />} />

@@ -1,14 +1,24 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import './Novel.css'
-import '../MainPage/MainPage.css'
 import UpdateNovel from '../../functionality/NovelButton/UpdateNovel/UpdateNovel'
 import DeleteNovel from '../../functionality/NovelButton/DeleteNovel/DeleteNovel'
 import { Link } from 'react-router-dom'
 import InsertChapter from '../../functionality/NovelButton/InsertChapter/InsertChapter'
+import { useDataLayerValue } from '../../../DataLayer'
 
 function Novel() {
+    const [{ user }] = useDataLayerValue();
+
+    let x = 'novel__btn__nonuser';
+    if (user){
+        if (user.usertype){
+            x = 'novel__btn';
+        }
+        else x = 'novel__btn__nonuser'
+    }
+    else x = 'novel__btn__nonuser'
+
     const location = useLocation();
 
     useEffect(() => {
@@ -33,7 +43,7 @@ function Novel() {
                             </div>
                         ))}
                     </div>
-                    <div className="novel__btn">
+                    <div className={x} >
                         <div className='novel__btn__item'>
                             <InsertChapter novel={location.state._id} />
                         </div>

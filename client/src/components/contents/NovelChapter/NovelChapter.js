@@ -1,8 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import './NovelChapter.css'
 import { useEffect } from 'react';
-import '../MainPage/MainPage.css'
 import UpdateChapter from '../../functionality/NovelButton/UpdateChapter/UpdateChapter';
 import DeleteChapter from '../../functionality/NovelButton/DeleteChapter/DeleteChapter';
 
@@ -19,11 +17,11 @@ function NovelChapter() {
                 <div className="read__novel">
                     <h1>{location.state.chap.chaptername}</h1>
                     <p>{location.state.chap.chaptercontent}</p>
-                    <div className='chapter__button'>
-                        <div className="chapter__button__item">
+                    <div className='novel__btn'>
+                        <div className="novel__btn__item">
                             <UpdateChapter chapter={location.state}/>
                         </div>
-                        <div className="chapter__button__item">
+                        <div className="novel__btn__item">
                             <DeleteChapter chapter={location.state}/>
                         </div>
                     </div>

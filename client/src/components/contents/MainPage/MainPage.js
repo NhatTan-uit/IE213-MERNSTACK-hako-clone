@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useDataLayerValue } from '../../../DataLayer'
 import Novels from '../Novels/Novels'
-import './MainPage.css'
 
 function MainPage() {
   const [{ novels }, dispatch] = useDataLayerValue();

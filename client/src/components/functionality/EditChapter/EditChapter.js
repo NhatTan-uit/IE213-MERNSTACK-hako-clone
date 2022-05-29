@@ -1,7 +1,6 @@
 import React from 'react'
-import './EditChapter.css'
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -10,6 +9,7 @@ function EditChapter() {
     const [chaptercontent, setChapterContent] = useState('');
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("location of my current chapter and novelid", location)
@@ -28,7 +28,10 @@ function EditChapter() {
 
         axios
             .put(`http://localhost:4000/novels/update/${location.state.novelid}/${location.state.chap._id}`, chapter)
-            .then(res => alert(res.data))
+            .then(res => {
+                alert(res.data)
+                navigate('/')
+            })
             .catch(err => {
                 console.log(err);
             });

@@ -1,9 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
-import '../../contents/MainPage/MainPage.css'
-import './EditNovel.css'
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function EditNovel() {
@@ -13,6 +11,7 @@ function EditNovel() {
     const [novelImage, setNovelImage] = useState('');
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("location of my novel", location)
@@ -38,7 +37,10 @@ function EditNovel() {
 
         axios
             .put(`http://localhost:4000/novels/update/${location.state}`, formData)
-            .then(res => alert(res.data))
+            .then(res => {
+                alert(res.data)
+                navigate('/')
+            })
             .catch(err => {
                 console.log(err);
             });

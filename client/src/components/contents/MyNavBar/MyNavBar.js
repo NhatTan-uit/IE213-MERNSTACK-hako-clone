@@ -8,7 +8,7 @@ import './MyNavBar.css'
 
 
 function MyNavBar() {
-  const [{ colortoggleState }, dispatch] = useDataLayerValue();
+  const [{ user, colortoggleState }, dispatch] = useDataLayerValue();
 
   let x1 = '';
 
@@ -17,6 +17,13 @@ function MyNavBar() {
   }
   else {
     x1 = 'mynavbar__background__color';
+  }
+
+  const onClicked = () => {
+    dispatch({
+      type: 'SET_LOGGED_USER',
+      user: null,
+    })
   }
 
   return (
@@ -36,9 +43,9 @@ function MyNavBar() {
           <div className="nav__items">
             <Link className='media__hide__seeks' to="/a">Kuroa</Link>
           </div>
-          <div className="nav__items">
+          {user && user.usertype && <div className="nav__items">
             <InsertNovel />
-          </div>
+          </div>}
           <div className="nav__items">
             <Link className='media__hide__seeks' to="/c">Kuroc</Link>
           </div>
@@ -52,8 +59,16 @@ function MyNavBar() {
           <PageModeToggle />
         </div>
 
+        {user && <div className='nav__user__name'>
+          <Link to='/dashboard'>{user.name}</Link>
+        </div>}
+
         <div className="nav__login__button">
-          <button>Login</button>
+          <button>
+            {user ?
+              <a href='/' onClick={onClicked} className='login__button__link'>Logout</a>
+              : <Link to='/authentication' className='login__button__link'>Login</Link>}
+          </button>
         </div>
       </div>
     </div>

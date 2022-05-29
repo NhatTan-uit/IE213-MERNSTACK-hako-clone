@@ -1,15 +1,17 @@
 import React from 'react'
-import './AddNewChapter.css'
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function AddNewChapter() {
     const [chaptername, setChapterName] = useState('');
     const [chaptercontent, setChapterContent] = useState('');
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("location of my current novel", location)
@@ -28,7 +30,10 @@ function AddNewChapter() {
 
         axios
             .post(`http://localhost:4000/novels/add/${location.state}`, chapter)
-            .then(res => alert(res.data))
+            .then(res => {
+                alert(res.data)
+                navigate('/')
+            })
             .catch(err => {
                 console.log(err);
             });

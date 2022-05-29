@@ -7,7 +7,7 @@ import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel
 
 function MySideBar() {
     let x = 'mysidebar';
-    const [ { sidebarState } , dispatch ] = useDataLayerValue();
+    const [ { user, sidebarState } , dispatch ] = useDataLayerValue();
 
     const sidebariconCLicked = () => {
         dispatch({
@@ -25,7 +25,7 @@ function MySideBar() {
         <div className={x}>
             <div className="sidebar__group">
                 <Link className='sidebar__items' to="/a">Kuroa</Link>
-                <InsertNovel />
+                {user && user.usertype && <InsertNovel />}
                 <Link className='sidebar__items' to="/c">Kuroc</Link>
             </div>
             <ArrowCircleLeftIcon onClick={sidebariconCLicked} fontSize='large' className='sidebar__icon' />

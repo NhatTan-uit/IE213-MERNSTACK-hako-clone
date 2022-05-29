@@ -42,6 +42,11 @@ const reducer = (state, action) => {
                 ...state,
                 novelcontent: action.novelcontent
             }
+        case 'SET_LOGGED_USER':
+            return {
+                ...state,
+                user: action.user
+            }
         default:
             return state;
     }
