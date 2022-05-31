@@ -10,6 +10,13 @@ router.get("/admin/", (req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`))
 });
 
+//REQUEST FIND USER BY ID
+router.get("/:id", (req, res) => {
+    Users.findById(req.params.id)
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(`Err ${err}`))
+});
+
 //REQUEST FOR LOGIN 
 router.post("/login", (req, res) => {
     Users.findOne({ username: req.body.username })

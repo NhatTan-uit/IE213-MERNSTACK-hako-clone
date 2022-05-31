@@ -23,7 +23,8 @@ function MyNavBar() {
     dispatch({
       type: 'SET_LOGGED_USER',
       user: null,
-    })
+    });
+    localStorage.removeItem('user');
   }
 
   return (
