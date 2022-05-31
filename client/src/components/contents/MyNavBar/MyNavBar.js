@@ -25,6 +25,7 @@ function MyNavBar() {
       user: null,
     });
     localStorage.removeItem('user');
+    alert("Logout succesfully");
   }
 
   return (
@@ -65,11 +66,9 @@ function MyNavBar() {
         </div>}
 
         <div className="nav__login__button">
-          <button>
-            {user ?
-              <a href='/' onClick={onClicked} className='login__button__link'>Logout</a>
-              : <Link to='/authentication' className='login__button__link'>Login</Link>}
-          </button>
+          {user ?
+            <a href='/' onClick={onClicked} className='login__button__link'>Logout</a>
+            : <Link to='/authentication' className='login__button__link'>Login</Link>}
         </div>
       </div>
     </div>

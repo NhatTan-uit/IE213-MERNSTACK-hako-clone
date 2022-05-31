@@ -11,12 +11,14 @@ function PageModeToggle() {
                 type: 'SET_COLORTOGGLE',
                 colortoggleState: false,
             });
+            localStorage.setItem('pagecolor', 'light');
         }
         else {
             dispatch({
                 type: 'SET_COLORTOGGLE',
                 colortoggleState: true,
             });
+            localStorage.setItem('pagecolor', 'dark');
         }
     }
 

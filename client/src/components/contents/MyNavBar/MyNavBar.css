@@ -77,6 +77,11 @@
     transform: scale(1.2);
 }
 
+.nav__login__button:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
 @media screen and (max-width: 700px) {
     .media__hide__seeks {
         display: none;

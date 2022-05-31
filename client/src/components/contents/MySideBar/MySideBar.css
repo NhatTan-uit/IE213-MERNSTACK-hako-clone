@@ -37,6 +37,11 @@
     text-decoration: none;
 }
 
+.sidebar__items p {
+    font-size: large;
+    margin-bottom: 10px;
+}
+
 .sidebar__icon {
     flex: 0.1;
     margin: 15px;

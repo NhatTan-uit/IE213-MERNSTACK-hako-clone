@@ -11,6 +11,7 @@ function App() {
   const [{ user, colortoggleState, sidebarState, novelitem }, dispatch] = useDataLayerValue();
 
   const userid = localStorage.getItem('user');
+  const pagecolorid = localStorage.getItem('pagecolor');
 
   useEffect(() => {
     axios.get(`http://localhost:4000/user/${userid}`)
@@ -27,10 +28,19 @@ function App() {
       type: 'SET_SIDEBARSTATE',
       sidebarState: false,
     });
-    dispatch({
-      type: 'SET_COLORTOGGLE',
-      colortoggleState: false,
-    });
+
+    if (pagecolorid == "light") {
+      dispatch({
+        type: 'SET_COLORTOGGLE',
+        colortoggleState: false,
+      });
+    }
+    else {
+      dispatch({
+        type: 'SET_COLORTOGGLE',
+        colortoggleState: true,
+      });
+    }
   }, [])
 
   return (

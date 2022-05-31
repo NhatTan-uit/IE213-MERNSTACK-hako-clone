@@ -23,12 +23,12 @@ function Login() {
         axios
             .post(`http://localhost:4000/user/login/`, user)
             .then(res => {
-                alert(res.data.message)
                 dispatch({
                     type: 'SET_LOGGED_USER',
                     user: res.data.user
                 })
                 localStorage.setItem('user',res.data.user._id)
+                alert(res.data.message)
                 navigate('/')
             })
             .catch(err => {
