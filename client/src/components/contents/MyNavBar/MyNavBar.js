@@ -62,7 +62,7 @@ function MyNavBar() {
         </div>
 
         {user && <div className='nav__user__name'>
-          <Link to='/dashboard'>{user.name}</Link>
+          <Link state={user} to='/dashboard'>{user.name}</Link>
         </div>}
 
         <div className="nav__login__button">

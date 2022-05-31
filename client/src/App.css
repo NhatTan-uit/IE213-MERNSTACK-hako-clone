@@ -1,3 +1,49 @@
+/* buttons and link (except form button) - start */
+
+/**all buttons and link in functionallity**/
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.link button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: large;
+    padding: 0;
+    text-decoration: none;
+}
+
+.delete__link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/**NOVEL BUTTONS color**/
+
+.novel__btn__nonuser {
+    display: none;
+}
+
+.novel__btn__item {
+    background-color: rgb(40, 151, 151);
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.novel__btn__item:hover {
+    background-color: rgb(87, 228, 228);
+}
+
+/* buttons and link (except form button) - end */
+
 /*mainpage css*/
 
 .mainpage::-webkit-scrollbar {
@@ -17,7 +63,6 @@
 }
 
 .mainpage__container {
-    margin: 10px 20px;
     background-color: wheat;
     display: flex;
     flex-direction: row;
@@ -26,11 +71,13 @@
 .mainpage__col__big {
     background-color: chartreuse;
     flex: 0.7;
+    margin: 10px 20px;
 }
 
 .mainpage__col__small {
     background-color: aqua;
     flex: 0.3;
+    margin: 10px 20px;
 }
 
 /*form css*/
@@ -82,11 +129,13 @@
     background-color: rgb(111, 111, 250);
 }
 
-/* NOVELS and BUTTONS */
+/* NOVELS and ALIGN BUTTONS */
 
 .novel__container {
     margin: 20px 0px;
 }
+
+/**align buttons**/
 
 .novel__btn {
     margin: 10px;
@@ -95,32 +144,34 @@
     align-items: center;
 }
 
-.novel__btn__nonuser {
-    display: none;
-}
-
-.novel__btn__item {
-    background-color: rgb(40, 151, 151);
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.novel__btn__item:hover {
-    background-color: rgb(87, 228, 228);
-}
-
 /* SINGLE NOVEL PAGE */
 
 .read__novel {
-    margin: 20px; 
- }
- 
- .read__novel h1 {
-     text-align: center;
-     margin: 20px 0px;
- }
+    margin: 20px;
+    white-space: pre-line;
+}
+
+.read__novel h1 {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+/* USER DASHBOARD */
+
+.dashboard__header {
+    margin: 20px 0px;
+}
+
+.dashboard__header h2 {
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.change__password {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 25px;
+}
 
 /* meia query*/
 
@@ -129,7 +180,7 @@
         flex-direction: column;
     }
 
-    .mainpage__col__big .mainpage__col__small{
+    .mainpage__col__big .mainpage__col__small {
         flex: 1;
     }
 }

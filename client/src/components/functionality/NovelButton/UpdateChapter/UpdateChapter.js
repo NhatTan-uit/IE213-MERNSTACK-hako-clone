@@ -1,5 +1,4 @@
 import React from 'react'
-import './UpdateChapter.css'
 import { Link } from 'react-router-dom'
 
 function UpdateChapter({ chapter }) {

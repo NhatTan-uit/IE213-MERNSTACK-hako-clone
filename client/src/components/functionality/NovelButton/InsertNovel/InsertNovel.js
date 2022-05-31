@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './InsertNovel.css'
 import { useDataLayerValue } from '../../../../DataLayer'
 
 function InsertNovel() {

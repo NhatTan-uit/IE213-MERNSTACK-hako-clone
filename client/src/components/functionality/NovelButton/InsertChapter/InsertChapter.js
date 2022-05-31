@@ -1,5 +1,4 @@
 import React from 'react'
-import './InsertChapter.css'
 import { Link } from 'react-router-dom'
 
 function InsertChapter( {novel} ) {

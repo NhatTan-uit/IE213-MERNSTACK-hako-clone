@@ -2,7 +2,6 @@ import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useDataLayerValue } from '../../../../DataLayer'
-import './DeleteNovel.css'
 
 function DeleteNovel({ novel }) {
   const [{ novels }, dispatch] = useDataLayerValue();

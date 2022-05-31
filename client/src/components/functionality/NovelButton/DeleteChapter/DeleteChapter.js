@@ -1,5 +1,4 @@
 import React from 'react'
-import './DeleteChapter.css'
 import { Link } from 'react-router-dom';
 import { useDataLayerValue } from '../../../../DataLayer';
 import axios from 'axios'

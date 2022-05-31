@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const [errmessage, setErrMessage] = useState('');
     const [name, setName] = useState('');
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
@@ -24,8 +25,14 @@ function Register() {
             axios
                 .post(`http://localhost:4000/user/register/`, user)
                 .then(res => {
-                    alert(res.data)
-                    navigate('/authentication')
+                    if (res.data === "User is already existed") {
+                        alert(res.data)
+                        setErrMessage("Please change Your Name or Username")
+                    }
+                    else {
+                        alert(res.data)
+                        navigate('/authentication')
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -33,6 +40,7 @@ function Register() {
         }
         else {
             alert("Wrong confirm password");
+            setErrMessage("Please check your confirm password")
         }
     }
 
@@ -42,6 +50,7 @@ function Register() {
                 <div className="add__form">
                     <form onSubmit={changeOnClick} encType='multipart/form-data'>
                         <h1>Login</h1>
+                        <p style={{color: 'red'}}>{errmessage}</p>
                         <label htmlFor="name">Your Name</label>
                         <input onChange={e => setName(e.target.value)} type='text' className='' placeholder="Enter Your Name" />
                         <label htmlFor="username">Username</label>
