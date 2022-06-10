@@ -12,7 +12,11 @@ function EditChapter() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("location of my current chapter and novelid", location)
+        console.log("location of my current chapter and novelid", location);
+        if (location.state) {
+            setChapterName(location.state.chap.chaptername);
+            setChapterContent(location.state.chap.chaptercontent);
+        }
     }, [])
 
     const changeOnClick = (e) => {
@@ -23,18 +27,16 @@ function EditChapter() {
             chaptercontent,
         };
 
-        setChapterName('');
-        setChapterContent('');
-
         axios
             .put(`http://localhost:4000/novels/update/${location.state.novelid}/${location.state.chap._id}`, chapter)
             .then(res => {
-                alert(res.data)
                 navigate('/')
             })
             .catch(err => {
                 console.log(err);
             });
+        
+        alert("Chapter Updated Successfully!!")
     }
 
     return (

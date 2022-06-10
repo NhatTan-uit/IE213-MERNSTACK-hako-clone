@@ -48,7 +48,7 @@ function Novel() {
                             <InsertChapter novel={location.state._id} />
                         </div>
                         <div className='novel__btn__item'>
-                            <UpdateNovel novel={location.state._id} />
+                            <UpdateNovel novel={location.state} />
                         </div>
                         <div className='novel__btn__item'>
                             <DeleteNovel novel={location.state._id} />

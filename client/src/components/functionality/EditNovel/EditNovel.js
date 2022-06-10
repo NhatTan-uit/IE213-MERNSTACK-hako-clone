@@ -14,12 +14,18 @@ function EditNovel() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("location of my novel", location)
-    }, [])
+        console.log("location of my novel", location);
+        if (location.state) {
+            setTitle(location.state.noveltitle);
+            setContent(location.state.novelcontent);
+            setAuthorName(location.state.authorname);
+            setNovelImage(location.state.novelImage);
+        }
+    }, []);
 
     const onChangeFile = e => {
         setNovelImage(e.target.files[0]);
-    }
+    };
 
     const changeOnClick = (e) => {
         e.preventDefault();
@@ -31,20 +37,17 @@ function EditNovel() {
         formData.append("authorname", authorname);
         formData.append("novelImage", novelImage);
 
-        setTitle('');
-        setContent('');
-        setAuthorName('');
-
         axios
-            .put(`http://localhost:4000/novels/update/${location.state}`, formData)
+            .put(`http://localhost:4000/novels/update/${location.state._id}`, formData)
             .then(res => {
-                alert(res.data)
                 navigate('/')
             })
             .catch(err => {
                 console.log(err);
             });
-    }
+
+        alert("Updated Successfully!!");
+    };
 
     return (
         <div className="mainpage__background__color">

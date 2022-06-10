@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDataLayerValue } from '../../../DataLayer'
+import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
 import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel'
 import SideBarButton from '../MySideBar/SideBarButton/SideBarButton'
 import PageModeToggle from '../PageModeToggle/PageModeToggle'
@@ -54,7 +55,7 @@ function MyNavBar() {
         </div>
 
         <div className="nav__search__bar">
-          <button> search </button>
+          <MySearchBar />
         </div>
 
         <div className="nav__toggle__button">

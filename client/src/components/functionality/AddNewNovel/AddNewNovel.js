@@ -25,19 +25,16 @@ function AddNewNovel() {
         formData.append("authorname", authorname);
         formData.append("novelImage", novelImage);
 
-        setTitle('');
-        setContent('');
-        setAuthorName('');
-
         axios
             .post("http://localhost:4000/novels/add", formData)
             .then(res => {
-                alert(res.data)
                 navigate('/')
             })
             .catch(err => {
                 console.log(err);
             });
+
+        alert("Insert Successfully!!")
     }
 
     return (

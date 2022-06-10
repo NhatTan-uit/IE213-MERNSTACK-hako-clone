@@ -25,18 +25,16 @@ function AddNewChapter() {
             chaptercontent,
         };
 
-        setChapterName('');
-        setChapterContent('');
-
         axios
             .post(`http://localhost:4000/novels/add/${location.state}`, chapter)
             .then(res => {
-                alert(res.data)
                 navigate('/')
             })
             .catch(err => {
                 console.log(err);
             });
+
+        alert("Insert Chapter Succesfully!!")
     }
 
     return (
