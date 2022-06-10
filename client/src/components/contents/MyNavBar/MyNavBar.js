@@ -8,7 +8,7 @@ import PageModeToggle from '../PageModeToggle/PageModeToggle'
 
 
 function MyNavBar() {
-  const [{ user, colortoggleState }, dispatch] = useDataLayerValue();
+  const [{ user, colortoggleState, filterData }, dispatch] = useDataLayerValue();
 
   let x1 = '';
 
@@ -36,7 +36,13 @@ function MyNavBar() {
         </div>
 
         <div className="nav__logo__img">
-          <Link to="/">
+          <Link onClick={() => {
+            // navigate to home, set search data to 0
+            dispatch({
+              type: 'SET_FILTER_DATA',
+              filterData: []
+            })
+          }} to="/">
             <img src='' alt='' />
           </Link>
         </div>

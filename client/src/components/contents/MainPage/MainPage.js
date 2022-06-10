@@ -1,13 +1,13 @@
 import React from 'react'
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useDataLayerValue } from '../../../DataLayer'
 import Novels from '../Novels/Novels'
 
 function MainPage() {
   const [{ novels }, dispatch] = useDataLayerValue();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     axios
       .get('http://localhost:4000/novels')
       .then(res => dispatch({

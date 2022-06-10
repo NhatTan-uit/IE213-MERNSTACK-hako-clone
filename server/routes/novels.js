@@ -23,6 +23,13 @@ router.get("/", (req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`))
 });
 
+//REQUEST GET NOVEL BY SEARCH RESULT
+router.post("/search", (req, res) => {
+    Novels.find({noveltitle : {$regex: req.body.searchResult}})
+        .then(novel => res.json(novel))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+});
+
 //REQUEST ADD NEW NOVEL
 router.post("/add", upload.single("novelImage"), (req, res) => {
     const newNovel = new Novels({

@@ -3,6 +3,7 @@ export const initialState = {
     noveltitle: '',
     novelcontent: '',
     authorname: '',
+    filterData: []
 };
 
 /* state is object attribute, action is for setting its value */
@@ -46,6 +47,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 user: action.user
+            }
+        case 'SET_FILTER_DATA':
+            return {
+                ...state,
+                filterData: action.filterData
             }
         default:
             return state;
