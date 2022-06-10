@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function InsertChapter( {novel} ) {
+function InsertChapter({ novel }) {
   return (
-    <div>
-        <Link state={novel} className='link' to={`/add/${novel}`}>Insert Chapter</Link>
+    <div className='link'>
+      <button>
+        <Link className='non__decorate__router__link' state={novel} to={`/add/${novel}`}>Insert Chapter</Link>
+      </button>
     </div>
   )
 }

@@ -8,6 +8,7 @@ function AddNewNovel() {
     const [novelcontent, setContent] = useState('');
     const [authorname, setAuthorName] = useState('');
     const [novelImage, setNovelImage] = useState('');
+    const [novelprice, setNovelPrice] = useState('');
 
     const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ function AddNewNovel() {
         formData.append("novelcontent", novelcontent);
         formData.append("authorname", authorname);
         formData.append("novelImage", novelImage);
+        formData.append("novelprice", novelprice);
 
         axios
             .post("http://localhost:4000/novels/add", formData)
@@ -53,6 +55,8 @@ function AddNewNovel() {
                             <label htmlFor='file'>Choose novel image</label>
                             <input onChange={onChangeFile} className='form__control__file' type="file" filename='novelImage' />
                         </div>
+                        <label htmlFor="price">Price</label>
+                        <input value={novelprice ?? ""} onChange={e => setNovelPrice(e.target.value)} type="number" className='' placeholder="Novel's Price" />
 
                         <button type="submit" className=''>
                             Post

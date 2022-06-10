@@ -36,7 +36,8 @@ router.post("/add", upload.single("novelImage"), (req, res) => {
         noveltitle: req.body.noveltitle,
         novelcontent: req.body.novelcontent,
         authorname: req.body.authorname,
-        novelImage: req.file.originalname
+        novelImage: req.file.originalname,
+        novelprice: req.body.novelprice
     })
 
     newNovel.save()
@@ -59,6 +60,7 @@ router.put("/update/:id", upload.single("novelImage"), (req, res) => {
             novel.novelcontent = req.body.novelcontent;
             novel.authorname = req.body.authorname;
             novel.novelImage = req.file.originalname;
+            novel.novelprice = req.body.novelprice;
 
             novel
                 .save()

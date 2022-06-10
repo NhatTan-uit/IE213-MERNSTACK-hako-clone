@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 
 function UpdateChapter({ chapter }) {
   return (
-    <div>
-      <Link state={chapter} className='link' to={`/update/${chapter.novelid}/${chapter.chap._id}`}>Update Chapter</Link>
+    <div className='link'>
+      <button>
+        <Link state={chapter} className='non__decorate__router__link' to={`/update/${chapter.novelid}/${chapter.chap._id}`}>Update Chapter</Link>
+      </button>
     </div>
   )
 }

@@ -6,6 +6,7 @@ const novelsSchema = new Schema({
     novelcontent: { type: String, required: true },
     authorname: { type: String, required: true },
     novelImage: { type: String, required: true },
+    novelprice: { type: Number, required: true },
     chapter: []
 });
 

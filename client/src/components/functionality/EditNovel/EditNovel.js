@@ -9,6 +9,7 @@ function EditNovel() {
     const [novelcontent, setContent] = useState('');
     const [authorname, setAuthorName] = useState('');
     const [novelImage, setNovelImage] = useState('');
+    const [novelprice, setNovelPrice] = useState('');
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ function EditNovel() {
             setContent(location.state.novelcontent);
             setAuthorName(location.state.authorname);
             setNovelImage(location.state.novelImage);
+            setNovelPrice(location.state.novelprice);
         }
     }, []);
 
@@ -36,6 +38,7 @@ function EditNovel() {
         formData.append("novelcontent", novelcontent);
         formData.append("authorname", authorname);
         formData.append("novelImage", novelImage);
+        formData.append("novelprice", novelprice);
 
         axios
             .put(`http://localhost:4000/novels/update/${location.state._id}`, formData)
@@ -65,6 +68,8 @@ function EditNovel() {
                             <label htmlFor='file'>Choose novel image</label>
                             <input onChange={onChangeFile} className='form__control__file' type="file" filename='novelImage' />
                         </div>
+                        <label htmlFor="price">Price</label>
+                        <input value={novelprice ?? ""} onChange={e => setNovelPrice(e.target.value)} type="number" className='' placeholder="Novel's Price" />
 
                         <button type="submit" >
                             Post

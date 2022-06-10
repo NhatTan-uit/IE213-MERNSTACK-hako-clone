@@ -25,7 +25,7 @@ function DeleteNovel({ novel }) {
 
   return (
     <div className='link'>
-      <button onClick={handleRemove}><Link className='delete__link' to="/redirect">Delete Novel</Link></button>
+      <button onClick={handleRemove}><Link className='non__decorate__router__link' to="/redirect">Delete Novel</Link></button>
     </div>
   )
 }
