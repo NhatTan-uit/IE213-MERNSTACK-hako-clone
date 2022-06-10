@@ -44,11 +44,11 @@ function AddNewNovel() {
                     <form onSubmit={changeOnClick} encType='multipart/form-data'>
                         <h1>Add new Novels</h1>
                         <label htmlFor="title">Novel Title</label>
-                        <input value={noveltitle} onChange={e => setTitle(e.target.value)} type="text" className='' placeholder="Novel's Title" />
+                        <input value={noveltitle ?? ""} onChange={e => setTitle(e.target.value)} type="text" className='' placeholder="Novel's Title" />
                         <label htmlFor="content">Author</label>
-                        <input value={authorname} onChange={e => setAuthorName(e.target.value)} type="text" className='' placeholder="Novel's Author" />
+                        <input value={authorname ?? ""} onChange={e => setAuthorName(e.target.value)} type="text" className='' placeholder="Novel's Author" />
                         <label htmlFor="authorname">Content</label>
-                        <textarea value={novelcontent} onChange={e => setContent(e.target.value)} className='' rows="3"></textarea>
+                        <textarea value={novelcontent ?? ""} onChange={e => setContent(e.target.value)} className='' rows="3"></textarea>
                         <div className="form__group">
                             <label htmlFor='file'>Choose novel image</label>
                             <input onChange={onChangeFile} className='form__control__file' type="file" filename='novelImage' />

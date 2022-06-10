@@ -44,9 +44,9 @@ function AddNewChapter() {
                     <form onSubmit={changeOnClick} encType='multipart/form-data'>
                         <h1>Insert New Chapter</h1>
                         <label htmlFor="chaptername">Chapter Name</label>
-                        <input value={chaptername} onChange={e => setChapterName(e.target.value)} type="text" className='' placeholder="Chapter's Title" />
+                        <input value={chaptername ?? ""} onChange={e => setChapterName(e.target.value)} type="text" className='' placeholder="Chapter's Title" />
                         <label htmlFor="chaptercontent">Content</label>
-                        <textarea value={chaptercontent} onChange={e => setChapterContent(e.target.value)} className='' rows="3"></textarea>
+                        <textarea value={chaptercontent ?? ""} onChange={e => setChapterContent(e.target.value)} className='' rows="3"></textarea>
                         <button type="submit" >
                             Post
                         </button>

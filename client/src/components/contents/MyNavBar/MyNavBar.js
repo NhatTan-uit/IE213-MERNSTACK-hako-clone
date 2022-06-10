@@ -5,7 +5,6 @@ import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
 import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel'
 import SideBarButton from '../MySideBar/SideBarButton/SideBarButton'
 import PageModeToggle from '../PageModeToggle/PageModeToggle'
-import './MyNavBar.css'
 
 
 function MyNavBar() {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDataLayerValue } from '../../../../DataLayer'
-import './SideBarButton.css'
 
 function SideBarButton() {
     const [{ sidebarState }, dispatch] = useDataLayerValue();

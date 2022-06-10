@@ -1,8 +1,8 @@
 import React from 'react'
-import './MySideBar.css'
 import { Link } from 'react-router-dom'
 import { useDataLayerValue } from '../../../DataLayer'
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
 import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel';
 import PageModeToggle from '../PageModeToggle/PageModeToggle';
 
@@ -25,6 +25,9 @@ function MySideBar() {
     return (
         <div className={x}>
             <div className="sidebar__group">
+                <div className="sidebar__items">
+                    <MySearchBar />
+                </div>
                 <Link className='sidebar__items' to="/a">Kuroa</Link>
                 {user && user.usertype && <InsertNovel />}
                 <Link className='sidebar__items' to="/c">Kuroc</Link>
@@ -35,7 +38,7 @@ function MySideBar() {
                     <PageModeToggle />
                 </div>
             </div>
-            <ArrowCircleLeftIcon onClick={sidebariconCLicked} fontSize='large' className='sidebar__icon' />
+            <ArrowCircleLeftIcon style={{ "cursor": "pointer", "fontSize": "30px"}} onClick={sidebariconCLicked} className='sidebar__icon' />
         </div>
     )
 }

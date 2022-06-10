@@ -1,7 +1,228 @@
+/*SIDEBAR*/
+/** side bar start **/
+.mysidebar {
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 40%;
+    min-width: 100px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transition: transform 0.7s ease-in-out;
+    transform: translateX(-100%);
+}
+
+.mysidebar__show {
+    display: none;
+    position: absolute;
+    background-color: black;
+    width: 40%;
+    min-width: 250px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transition: transform 0.7s ease-in-out;
+    transform: translateX(0%);
+}
+
+.sidebar__group {
+    display: none;
+    flex: 0.9;
+    flex-direction: column;
+}
+
+.sidebar__items {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar__items p {
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+.sidebar__icon {
+    flex: 0.1;
+    margin: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.sidebar__icon:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+/* side bar button */
+.sidebarbutton button {
+    display: none;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .sidebarbutton button {
+        display: block;
+    }
+    .mysidebar__show {
+        display: flex;
+    }
+    .sidebar__group {
+        display: flex;
+    }
+    .sidebar__group .nav__search__bar {
+        display: block;
+    }
+    .sidebar__items {
+        margin: 15px;
+        color: white;
+        font-size: large;
+        text-decoration: none;
+    }
+  }
+/* sidebar button end*/
+
+/** side bar end **/
+
+/*----------------------------------------------------------------*/
+
+/*NAV BAR*/
+/** nav bar start **/
+/*dark mode test*/
+.mynavbar__background__color__dark {
+    background-color: cadetblue;
+}
+
+.mynavbar__background__color__dark .media__hide__seeks {
+    color: white;
+}
+
+/*light mode test*/
+.mynavbar__background__color {
+    background-color: powderblue;
+}
+
+.mynavbar {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85vw;
+}
+
+.nav__sidebar__button {
+    margin-left: 10px;
+}
+
+.nav__logo__img img {
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+}
+
+.mynavbar__links__items {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0px;
+    height: 50px;
+}
+
+.nav__items {
+    margin: 40px;
+}
+
+.nav__login__button {
+    margin: 10px;
+    margin-right: 20px;
+}
+
+.nav__login__button .login__button__link {
+    text-decoration: none;
+    color: black;
+}
+
+.nav__search__bar {
+    margin: 10px;
+    width: 700px;
+}
+
+.nav__user__name {
+    margin: 10px;
+}
+
+.nav__toggle__button {
+    margin: 10px;
+}
+
+.media__hide__seeks {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.nav__items:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+.nav__login__button:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 1000px) {
+    .media__hide__seeks {
+        display: none;
+    }
+    .nav__items {
+        display: none;
+    }
+    .nav__search__bar {
+        display: none;
+    }
+    .nav__toggle__button {
+        display: none;
+    }
+}
+/** nav bar end **/
+
+/*----------------------------------------------------------------*/
+
+/*SEARCH BAR*/
+/** search bar start **/
+.my__search {
+    position: relative;
+    min-width: 100px;
+}
+.search__item::-webkit-scrollbar {
+    display: none;
+}
+.search__item {
+    margin-top: 2px;
+    background-color: rgb(254, 235, 235);
+    border-radius: 5px;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    overflow: overlay;
+    z-index: 100;
+}
+.search__novel__item {
+    padding: 20px;
+}
+/** search bar end **/
+
+/*----------------------------------------------------------------*/
+
 /* buttons and link (except form button) - start */
 
 /**all buttons and link in functionallity**/
-
 .link {
     text-decoration: none;
     color: white;
@@ -26,7 +247,6 @@
 }
 
 /**NOVEL BUTTONS color**/
-
 .novel__btn__nonuser {
     display: none;
 }
@@ -41,11 +261,13 @@
 .novel__btn__item:hover {
     background-color: rgb(87, 228, 228);
 }
-
 /* buttons and link (except form button) - end */
 
-/*mainpage css*/
 
+/*----------------------------------------------------------------*/
+
+
+/*mainpage css*/
 .mainpage::-webkit-scrollbar {
     display: none;
 }
@@ -175,7 +397,7 @@
 
 /* meia query*/
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
     .mainpage__container {
         flex-direction: column;
     }
