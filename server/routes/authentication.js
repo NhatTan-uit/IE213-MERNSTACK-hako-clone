@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Users = require('../models/authentication');
+const UserCart = require('../models/usercart');
 
 //REQUEST ALL USERS
 
@@ -79,6 +80,28 @@ router.post("/admin/register", (req, res) => {
             }
         })
         .catch(err => res.status(400).json(`Error: ${err}`));
+})
+
+
+
+//CART SUBDOCUMENT
+
+//REQUEST FIND USER BY ID AND ADD CART (SUBDOCUMENT)
+
+router.post("/addcart/:id", (req, res) => {
+    const newUserCart = new UserCart({
+        usercart: req.body.usercart,
+        totalcartprice: req.body.totalcartprice
+    })
+
+    Users.findById(req.params.id)
+        .then(user => {
+            user.cart.push(newUserCart);
+            user.save()
+                .then(() => res.json("Cart Added To User!!!"))
+                .catch(err => res.status(400).json(`Error: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`))
 })
 
 module.exports = router;

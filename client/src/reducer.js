@@ -4,7 +4,8 @@ export const initialState = {
     novelcontent: '',
     authorname: '',
     filterData: [],
-    cart: []
+    cart: [],
+    carttotal: 0
 };
 
 /* state is object attribute, action is for setting its value */
@@ -58,6 +59,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 cart: action.cart
+            }
+        case 'SET_CART_TOTAL_PRICE':
+            return {
+                ...state,
+                carttotal: action.carttotal
             }
         default:
             return state;

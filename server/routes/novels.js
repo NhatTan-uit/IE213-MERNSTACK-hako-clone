@@ -5,6 +5,8 @@ const Chapters = require("../models/chapters");
 const mongoose = require('mongoose');
 const multer = require("multer");
 
+
+//multer for image locate
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, "../client/public/uploads/");
@@ -114,7 +116,7 @@ router.put("/update/:id/:_id", (req, res) => {
         .catch(err => res.status(400).json(`Err: ${err}`))
 });
 
-//REQUEST FIND CHAPTER BY ID AND UPDATE
+//REQUEST FIND CHAPTER BY ID AND DELETE
 router.put("/:id/:_id", (req, res) => {
     Novels.findOneAndUpdate(
         { "_id": mongoose.Types.ObjectId(req.params.id)},

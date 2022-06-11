@@ -14,6 +14,7 @@ function App() {
   const pagecolorid = localStorage.getItem('pagecolor');
 
   useEffect(() => {
+    //get user
     axios.get(`http://localhost:4000/user/${userid}`)
       .then(res => {
         dispatch({

@@ -69,22 +69,27 @@
     .sidebarbutton button {
         display: block;
     }
+
     .mysidebar__show {
         display: flex;
     }
+
     .sidebar__group {
         display: flex;
     }
+
     .sidebar__group .nav__search__bar {
         display: block;
     }
+
     .sidebar__items {
         margin: 15px;
         color: white;
         font-size: large;
         text-decoration: none;
     }
-  }
+}
+
 /* sidebar button end*/
 
 /** side bar end **/
@@ -180,16 +185,20 @@
     .media__hide__seeks {
         display: none;
     }
+
     .nav__items {
         display: none;
     }
+
     .nav__search__bar {
         display: none;
     }
+
     .nav__toggle__button {
         display: none;
     }
 }
+
 /** nav bar end **/
 
 /*----------------------------------------------------------------*/
@@ -200,9 +209,11 @@
     position: relative;
     min-width: 100px;
 }
+
 .search__item::-webkit-scrollbar {
     display: none;
 }
+
 .search__item {
     margin-top: 2px;
     background-color: rgb(254, 235, 235);
@@ -213,9 +224,11 @@
     overflow: overlay;
     z-index: 100;
 }
+
 .search__novel__item {
     padding: 20px;
 }
+
 /** search bar end **/
 
 /*----------------------------------------------------------------*/
@@ -266,6 +279,7 @@
 .novel__btn__item:hover {
     background-color: rgb(87, 228, 228);
 }
+
 /* buttons and link (except form button) - end */
 
 
@@ -273,6 +287,7 @@
 
 
 /*mainpage css*/
+/**mainpage start**/
 .mainpage::-webkit-scrollbar {
     display: none;
 }
@@ -307,8 +322,12 @@
     margin: 10px 20px;
 }
 
-/*form css*/
+/**mainpage end**/
 
+/*----------------------------------------------------------------*/
+
+/*form css*/
+/**form start**/
 .add__form {
     min-width: 100px;
     width: 80%;
@@ -356,14 +375,17 @@
     background-color: rgb(111, 111, 250);
 }
 
-/* NOVELS and ALIGN BUTTONS */
+/**form end**/
 
+/*----------------------------------------------------------------*/
+
+/* NOVELS and ALIGN BUTTONS */
+/**novels start**/
 .novel__container {
     margin: 20px 0px;
 }
 
-/**align buttons**/
-
+/***align buttons***/
 .novel__btn {
     margin: 10px;
     display: flex;
@@ -371,8 +393,12 @@
     align-items: center;
 }
 
-/* SINGLE NOVEL PAGE */
+/**novels end**/
 
+/*----------------------------------------------------------------*/
+
+/* SINGLE NOVEL PAGE */
+/**novel page start**/
 .read__novel {
     margin: 20px;
     white-space: pre-line;
@@ -383,8 +409,12 @@
     margin: 20px 0px;
 }
 
-/* USER DASHBOARD */
+/**novel page end**/
 
+/*----------------------------------------------------------------*/
+
+/* USER DASHBOARD */
+/**dashboard start**/
 .dashboard__header {
     margin: 20px 0px;
 }
@@ -399,6 +429,39 @@
     flex-direction: column;
     margin: 20px 25px;
 }
+
+/***cart start***/
+.cartitem__price__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.cartitem__quantity__button {
+    flex: 0.5;
+    display: flex;
+    margin: 20px;
+}
+
+.cartitem__totalprice {
+    flex: 0.5;
+    display: flex;
+    margin: 20px;
+}
+
+.cartitem__quantity__button * {
+    margin-left: 10px;
+}
+
+.cartitem__totalprice * {
+    margin-left: 10px;
+}
+/***cart end***/
+
+/**dashboard end**/
+
+/*----------------------------------------------------------------*/
 
 /* meia query*/
 

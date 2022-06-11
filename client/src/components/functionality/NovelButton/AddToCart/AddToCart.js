@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { Navigate } from 'react-router-dom';
+import React from 'react'
 import { useDataLayerValue } from '../../../../DataLayer'
 import { useNavigate } from 'react-router-dom';
 
@@ -25,9 +24,20 @@ function AddToCart({ novel }) {
         }
 
         if (isAddToCart) {
+            const cartitem = {
+                _id: novel._id,
+                noveltitle: novel.noveltitle,
+                novelcontent: novel.novelcontent,
+                novelImage: novel.novelImage,
+                authorname: novel.authorname,
+                novelprice: novel.novelprice,
+                quantity: 0,
+                totalprice: 0,
+            }
+
             dispatch({
                 type: 'SET_CART',
-                cart: cart.concat(novel)
+                cart: cart.concat(cartitem)
             });
             alert("Them vao gio hang thanh cong");
         }
