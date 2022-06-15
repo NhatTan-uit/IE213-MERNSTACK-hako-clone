@@ -7,28 +7,40 @@ function AddCartToUser({ user }) {
 
     const handleAddCartToUser = () => {
         if (window.confirm("Ban co chac muon thanh toan?")) {
-            if (cart.length > 0) {
-                if (carttotal === 0) {
-                    alert("ERR: Khong the thanh toan, so luong san pham = 0");
+            if (window.confirm("Mot khi thanh toan se khong duoc huy trang thai don hang")) {
+                if (cart.length > 0) {
+                    let check = true;
+
+                    cart.forEach((item) => {
+                        if (item.quantity === 0) {
+                            check = false;
+                        }
+                    })
+
+                    //check if any cart quantity is 0
+                    if (check) {
+                        const cartToUser = {
+                            usercart: cart,
+                            totalcartprice: carttotal
+                        };
+
+                        axios
+                            .post(`http://localhost:4000/user/addcart/${user}`, cartToUser)
+                            .then(res => {
+                                alert(res.data);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            });
+                    }
+                    else {
+                        alert("ERR: Khong the thanh toan");
+                        alert("Vui lòng kiểm tra lại số lượng sản phẩm, nếu = 0 hãy xóa khỏi giỏ hàng");
+                    }
                 }
                 else {
-                    const cartToUser = {
-                        usercart: cart,
-                        totalcartprice: carttotal
-                    };
-
-                    axios
-                        .post(`http://localhost:4000/user/addcart/${user}`, cartToUser)
-                        .then(res => {
-                            alert(res.data);
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
+                    alert("ERR: Gio hang rong!!");
                 }
-            }
-            else {
-                alert("ERR: Gio hang rong!!");
             }
         }
     }

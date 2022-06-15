@@ -3,19 +3,25 @@ const router = express.Router();
 const Users = require('../models/authentication');
 const UserCart = require('../models/usercart');
 
-//REQUEST ALL USERS
-
-router.get("/admin/", (req, res) => {
-    Users.find()
-        .then(user => res.json(user))
-        .catch(err => res.status(400).json(`Error: ${err}`))
-});
-
 //REQUEST FIND USER BY ID
 router.get("/:id", (req, res) => {
     Users.findById(req.params.id)
         .then(user => res.json(user))
         .catch(err => res.status(400).json(`Err ${err}`))
+});
+
+//REQUEST FIND USER BY ID AND CHANGE PASSWORD
+router.put("/changepassword/:id", (req, res) => {
+    Users.findById(req.params.id)
+        .then(user => {
+            user.password = req.body.password
+
+            user
+                .save()
+                .then(() => res.json("Password Changed Successfully"))
+                .catch(err => res.status(400).json(`Err: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Err: ${err}`))
 });
 
 //REQUEST FOR LOGIN 

@@ -6,6 +6,8 @@ const userSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     usertype: { type: String },
+    userImage: { type: String },
+    aboutme: { type: String },
     cart: []
 })
 

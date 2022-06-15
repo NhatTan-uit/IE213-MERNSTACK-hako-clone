@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDataLayerValue } from '../../../DataLayer'
 import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
 import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel'
 import SideBarButton from '../MySideBar/SideBarButton/SideBarButton'
 import PageModeToggle from '../PageModeToggle/PageModeToggle'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 
 function MyNavBar() {
-  const [{ user, colortoggleState, filterData }, dispatch] = useDataLayerValue();
+  const [{ user, cart, colortoggleState, filterData }, dispatch] = useDataLayerValue();
 
   let x1 = '';
 
@@ -48,15 +49,17 @@ function MyNavBar() {
         </div>
 
         <div className="mynavbar__links__items">
-          <div className="nav__items">
-            <Link className='media__hide__seeks' to="/a">Kuroa</Link>
-          </div>
           {user && user.usertype && <div className="nav__items">
             <InsertNovel />
           </div>}
-          <div className="nav__items">
-            <Link className='media__hide__seeks' to="/c">Kuroc</Link>
-          </div>
+          {user && <div className="nav__cart__number">
+            <Link state={user} className='nav__cart__number__link' to="/cart">
+              <div className="cart__number">
+                {cart.length}
+              </div>
+              <ShoppingCartOutlinedIcon />
+            </Link>
+          </div>}
         </div>
 
         <div className="nav__search__bar">

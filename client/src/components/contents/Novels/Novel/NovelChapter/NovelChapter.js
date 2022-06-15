@@ -1,9 +1,9 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react';
-import UpdateChapter from '../../functionality/NovelButton/UpdateChapter/UpdateChapter';
-import DeleteChapter from '../../functionality/NovelButton/DeleteChapter/DeleteChapter';
-import { useDataLayerValue } from '../../../DataLayer';
+import UpdateChapter from '../../../../functionality/NovelButton/UpdateChapter/UpdateChapter';
+import DeleteChapter from '../../../../functionality/NovelButton/DeleteChapter/DeleteChapter';
+import { useDataLayerValue } from '../../../../../DataLayer';
 
 function NovelChapter() {
     const [{ user }] = useDataLayerValue();

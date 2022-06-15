@@ -1,11 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import UpdateNovel from '../../functionality/NovelButton/UpdateNovel/UpdateNovel'
-import DeleteNovel from '../../functionality/NovelButton/DeleteNovel/DeleteNovel'
+import UpdateNovel from '../../../functionality/NovelButton/UpdateNovel/UpdateNovel'
+import DeleteNovel from '../../../functionality/NovelButton/DeleteNovel/DeleteNovel'
 import { Link } from 'react-router-dom'
-import InsertChapter from '../../functionality/NovelButton/InsertChapter/InsertChapter'
-import { useDataLayerValue } from '../../../DataLayer'
+import InsertChapter from '../../../functionality/NovelButton/InsertChapter/InsertChapter'
+import { useDataLayerValue } from '../../../../DataLayer'
 
 function Novel() {
     const [{ user }] = useDataLayerValue();

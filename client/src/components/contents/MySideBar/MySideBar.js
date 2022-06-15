@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDataLayerValue } from '../../../DataLayer'
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
 import InsertNovel from '../../functionality/NovelButton/InsertNovel/InsertNovel';
 import PageModeToggle from '../PageModeToggle/PageModeToggle';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 function MySideBar() {
     let x = 'mysidebar';
-    const [{ user, sidebarState, colortoggleState }, dispatch] = useDataLayerValue();
+    const [{ user, cart, sidebarState, colortoggleState }, dispatch] = useDataLayerValue();
 
     const sidebariconCLicked = () => {
         dispatch({
@@ -28,9 +29,15 @@ function MySideBar() {
                 <div className="sidebar__items">
                     <MySearchBar />
                 </div>
-                <Link className='sidebar__items' to="/a">Kuroa</Link>
+                {user && <Link className='sidebar__items' to="/cart">Cart History</Link>}
                 {user && user.usertype && <InsertNovel />}
-                <Link className='sidebar__items' to="/c">Kuroc</Link>
+                {user && <Link state={user} className='sidebar__items' to="/dashboard">
+                    <div className="cart__number">
+                        {cart.length}
+                    </div>
+                    <ShoppingCartOutlinedIcon />
+                </Link>}
+
                 <div className="sidebar__items">
                     {colortoggleState ?
                         <p>Switch to light?</p>
@@ -38,7 +45,7 @@ function MySideBar() {
                     <PageModeToggle />
                 </div>
             </div>
-            <ArrowCircleLeftIcon style={{ "cursor": "pointer", "fontSize": "30px"}} onClick={sidebariconCLicked} className='sidebar__icon' />
+            <ArrowCircleLeftIcon style={{ "cursor": "pointer", "fontSize": "30px" }} onClick={sidebariconCLicked} className='sidebar__icon' />
         </div>
     )
 }

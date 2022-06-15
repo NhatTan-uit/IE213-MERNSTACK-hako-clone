@@ -10,42 +10,47 @@ function AddToCart({ novel }) {
     let isAddToCart = true;
 
     const handleAddToCart = () => {
-        let checkIfExist = cart.map((item) => {
-            if (item._id === novel._id) {
-                return true;
-            }
-        });
-
-        for (var i = 0; i <= checkIfExist.length; i++) {
-            if (checkIfExist[i]) {
-                isAddToCart = false;
-                break;
-            }
-        }
-
-        if (isAddToCart) {
-            const cartitem = {
-                _id: novel._id,
-                noveltitle: novel.noveltitle,
-                novelcontent: novel.novelcontent,
-                novelImage: novel.novelImage,
-                authorname: novel.authorname,
-                novelprice: novel.novelprice,
-                quantity: 0,
-                totalprice: 0,
-            }
-
-            dispatch({
-                type: 'SET_CART',
-                cart: cart.concat(cartitem)
+        if (user) {
+            let checkIfExist = cart.map((item) => {
+                if (item._id === novel._id) {
+                    return true;
+                }
             });
-            alert("Them vao gio hang thanh cong");
+
+            for (var i = 0; i <= checkIfExist.length; i++) {
+                if (checkIfExist[i]) {
+                    isAddToCart = false;
+                    break;
+                }
+            }
+
+            if (isAddToCart) {
+                const cartitem = {
+                    _id: novel._id,
+                    noveltitle: novel.noveltitle,
+                    novelcontent: novel.novelcontent,
+                    novelImage: novel.novelImage,
+                    authorname: novel.authorname,
+                    novelprice: novel.novelprice,
+                    quantity: 0,
+                    totalprice: 0,
+                }
+
+                dispatch({
+                    type: 'SET_CART',
+                    cart: cart.concat(cartitem)
+                });
+                alert("Them vao gio hang thanh cong");
+            }
+            else {
+                alert("Ban da them san pham nay vao gio hang roi!!");
+                if (window.confirm("Ban co muon vao gio hang cua ban de dieu chinh so luong san pham va thuc hien thanh toan?")) {
+                    navigate('/cart', { state: user });
+                };
+            }
         }
         else {
-            alert("Ban da them san pham nay vao gio hang roi!!");
-            if (window.confirm("Ban co muon vao gio hang cua ban de dieu chinh so luong san pham va thuc hien thanh toan?")) {
-                navigate('/dashboard', { state: user });
-            };
+            alert("Bạn phải đăng nhập để sử dụng chức năng này")
         }
     }
 
