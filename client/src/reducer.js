@@ -5,7 +5,11 @@ export const initialState = {
     authorname: '',
     filterData: [],
     cart: [],
-    carttotal: 0
+    carttotal: 0,
+    sidebarState: false,
+    colortoggleState: false,
+    user: null,
+    
 };
 
 /* state is object attribute, action is for setting its value */

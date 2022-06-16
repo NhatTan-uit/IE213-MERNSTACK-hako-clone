@@ -2,6 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Users = require('../models/authentication');
 const UserCart = require('../models/usercart');
+const multer = require("multer");
+
+//multer for image locate
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, "../client/public/uploads/");
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.originalname);
+    }
+})
+
+const upload = multer({ storage: storage });
 
 //REQUEST FIND USER BY ID
 router.get("/:id", (req, res) => {
@@ -19,6 +32,19 @@ router.put("/changepassword/:id", (req, res) => {
             user
                 .save()
                 .then(() => res.json("Password Changed Successfully"))
+                .catch(err => res.status(400).json(`Err: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Err: ${err}`))
+});
+
+router.put("/update/img/:id", upload.single("userImage"), (req, res) => {
+    Users.findById(req.params.id)
+        .then(user => {
+            user.userImage = req.file.originalname;
+
+            user
+                .save()
+                .then(() => res.json("User Image Updated Successfully"))
                 .catch(err => res.status(400).json(`Err: ${err}`))
         })
         .catch(err => res.status(400).json(`Err: ${err}`))
@@ -45,7 +71,7 @@ router.post("/login", (req, res) => {
 
 //REQUEST FOR REGISTER 
 router.post("/register", (req, res) => {
-    Users.findOne({ $or: [{name: req.body.name},{ username: req.body.username }]})
+    Users.findOne({ $or: [{ name: req.body.name }, { username: req.body.username }] })
         .then(user => {
             if (user) {
                 res.json("User is already existed");
@@ -67,7 +93,7 @@ router.post("/register", (req, res) => {
 
 //REQUEST FOR ADMIN REGISTER
 router.post("/admin/register", (req, res) => {
-    Users.findOne({ $or: [{name: req.body.name},{ username: req.body.username }]})
+    Users.findOne({ $or: [{ name: req.body.name }, { username: req.body.username }] })
         .then(user => {
             if (user) {
                 res.json("User is already existed");

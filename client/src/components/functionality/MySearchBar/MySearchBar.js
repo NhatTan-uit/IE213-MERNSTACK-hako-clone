@@ -12,7 +12,7 @@ function MySearchBar() {
 
     const [searchResult, setSearchResult] = useState('');
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams('');
 
     const searchWord = searchParams.get('noveltitle') || '';
 

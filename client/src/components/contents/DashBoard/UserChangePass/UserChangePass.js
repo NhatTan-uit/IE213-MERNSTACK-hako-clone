@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function UserChangePass() {
     const [{ user }, dispatch] = useDataLayerValue();
-    const [currentpw, setCurrentPw] = useState();
-    const [newpw, setNewPw] = useState();
-    const [confirmpw, setConfirmPw] = useState();
+    const [currentpw, setCurrentPw] = useState("");
+    const [newpw, setNewPw] = useState("");
+    const [confirmpw, setConfirmPw] = useState("");
 
     const navigate = useNavigate();
 

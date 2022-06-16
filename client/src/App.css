@@ -150,6 +150,7 @@
     justify-content: space-between;
     align-items: center;
     width: 85vw;
+    height: 55px;
 }
 
 .nav__sidebar__button {
@@ -200,11 +201,7 @@
 .nav__login__button .login__button__link {
     text-decoration: none;
     color: black;
-}
-
-.nav__login__button:hover {
-    transition: transform 0.2s ease-in-out;
-    transform: scale(1.2);
+    margin-left: 10px;
 }
 /*login*/
 
@@ -238,6 +235,36 @@
 /*user*/
 .nav__user__name {
     margin: 10px;
+}
+
+.nav__user__image {
+    display: flex;
+    justify-content: center;
+    margin: 10px -10px 10px 10px;
+}
+
+.nav__user__dropdown__hide {
+    display: none;
+}
+
+.nav__user__dropdown {
+    position: absolute;
+    top: 55px;
+    right: 9vw;
+    height: 170px;
+    width: 150px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.nav__user__dropdown * {
+    margin: 10px;
+}
+
+.nav__user__dropdown *:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.05);
 }
 /*user*/
 
@@ -515,6 +542,16 @@
 /**dashboard start**/
 
 /***user info start***/
+
+/****name****/
+.dashboard__user__name * {
+    display: inline-block;
+    margin: 5px;
+    vertical-align: middle;
+}
+/****name****/
+
+/****img****/
 .dashboard__user__image {
     width: 20vw;
     max-width: 200px;
@@ -539,12 +576,40 @@
 
 .dashboard__user__image__file {
     margin-top: 25px;
-    padding: 10px 20px;
     position: absolute;
     cursor: pointer;
     border-radius: 10px;
     text-align: center;
 }
+
+.dashboard__user__request__changing__img {
+    height: 50vh;
+    width: 50vw;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    border: 0.5px solid grey;
+}
+
+.dashboard__user__request__changing__img__hide {
+    display: none;
+    height: 50vh;
+    width: 50vw;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    border: 0.5px solid grey;
+}
+/****img****/
+
+/****about****/
+.dashboard__user__about * {
+    display: inline-block;
+    margin: 5px;
+    vertical-align: middle;
+    white-space: pre-line;
+}
+/****about****/
 
 @media screen and (max-width: 400px) {
     .dashboard__user__image__file {

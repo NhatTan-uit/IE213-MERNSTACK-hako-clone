@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDataLayerValue } from '../../../DataLayer';
 import './PageModeToggle.css'
 
 function PageModeToggle() {
     const [{ colortoggleState }, dispatch] = useDataLayerValue();
+    const [togglestate, setToggleState] = useState();
+
+    console.log(togglestate);
 
     const handletoggleChange = () => {
         if (colortoggleState) {
@@ -24,7 +27,7 @@ function PageModeToggle() {
 
     return (
         <div className='switch'>
-            <input checked={colortoggleState} type='checkbox' />
+            <input onChange={(e) => setToggleState(e.target.value)} checked={colortoggleState} type='checkbox' />
             <div onClick={handletoggleChange} className='slider'></div>
         </div>
     )

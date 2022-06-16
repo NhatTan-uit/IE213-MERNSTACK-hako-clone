@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDataLayerValue } from '../../../DataLayer'
 import MySearchBar from '../../functionality/MySearchBar/MySearchBar'
@@ -10,6 +10,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 function MyNavBar() {
   const [{ user, cart, colortoggleState, filterData }, dispatch] = useDataLayerValue();
+  const [userdropdown, setUserDropDown] = useState('nav__user__dropdown__hide');
 
   let x1 = '';
 
@@ -27,6 +28,7 @@ function MyNavBar() {
     });
     localStorage.removeItem('user');
     alert("Logout succesfully");
+    setUserDropDown('nav__user__dropdown__hide');
   }
 
   return (
@@ -70,14 +72,52 @@ function MyNavBar() {
           <PageModeToggle />
         </div>
 
-        {user && <div className='nav__user__name'>
-          <Link state={user} to='/dashboard'>{user.name}</Link>
-        </div>}
+        {user && user.userImage &&
+          <div
+            onClick={() => {
+              if (userdropdown === 'nav__user__dropdown__hide')
+                setUserDropDown('nav__user__dropdown')
+              else setUserDropDown('nav__user__dropdown__hide')
+            }}
+            className='nav__user__image'>
+            <img
+              style={{ "cursor": "pointer", "height": "30px", "width": "30px", "borderRadius": "50%" }}
+              src={`/uploads/${user.userImage}`}
+              alt='...'
+            />
+          </div>}
+
+        {user && !user.userImage &&
+          <div
+            onClick={() => {
+              if (userdropdown === 'nav__user__dropdown__hide')
+                setUserDropDown('nav__user__dropdown')
+              else setUserDropDown('nav__user__dropdown__hide')
+            }}
+            className='nav__user__image'>
+            <img
+              style={{ "cursor": "pointer", "height": "30px", "width": "30px", "borderRadius": "50%" }}
+              src={`/uploads/nonuser.png`}
+              alt='...'
+            />
+          </div>}
 
         <div className="nav__login__button">
-          {user ?
-            <a href='/' onClick={onClicked} className='login__button__link'>Logout</a>
-            : <Link to='/authentication' className='login__button__link'>Login</Link>}
+          {!user && <Link to='/authentication' className='login__button__link'>Login</Link>}
+        </div>
+
+        <div className={userdropdown}>
+          <div className='nav__user__name'>
+            <Link
+              onClick={() => setUserDropDown('nav__user__dropdown__hide')}
+              state={user}
+              to='/dashboard'>
+              My profile
+            </Link>
+          </div>
+          <div className="nav__login__button">
+            {user && <a href='/' onClick={onClicked} className='login__button__link'>Logout</a>}
+          </div>
         </div>
       </div>
     </div>
