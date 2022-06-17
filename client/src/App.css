@@ -260,6 +260,7 @@
     background-color: white;
     color: black;
     font-weight: bold;
+    z-index: 100;
 }
 
 .nav__user__dropdown * {
@@ -613,7 +614,7 @@
 .dashboard__user__request__changing__img,
 .dashboard__user__request__changing__info {
     left: 50%;
-    top: 70%;
+    top: 350px;
     transform: translate(-50%, -50%);
     height: auto;
     width: 70vw;
@@ -625,7 +626,7 @@
 .dashboard__user__request__changing__img__hide,
 .dashboard__user__request__changing__info__hide {
     left: 50%;
-    top: 70%;
+    top: 350px;
     transform: translate(-50%, -50%);
     display: none;
     height: auto;

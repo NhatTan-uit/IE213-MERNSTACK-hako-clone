@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
-import EditIcon from '@mui/icons-material/Edit';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDataLayerValue } from '../../../../DataLayer';
+import ChangeUserAvatar from '../../../functionality/ChangeUserAvatar/ChangeUserAvatar';
 
 function UserInfo({ currentuser }) {
     const [{ user }, dispatch] = useDataLayerValue();
-    const [hoverstate, setHoverState] = useState(false);
-    const [userImage, setUserImage] = useState('');
-    const [imgstate, setImgState] = useState('dashboard__user__image');
     //chooser for update
-    const [imgchooser, setImgChooser] = useState('dashboard__user__request__changing__img__hide');
     const [infochooser, setInfoChooser] = useState('dashboard__user__request__changing__info__hide');
 
     //user info name, about
@@ -21,50 +17,9 @@ function UserInfo({ currentuser }) {
 
     const navigate = useNavigate();
 
-    //handle img appear/hide
-    const handleAppear = () => {
-        setHoverState(true);
-        setImgState('dashboard__user__image__hover');
-    }
-    const handleHide = () => {
-        setHoverState(false);
-        setImgState('dashboard__user__image');
-    }
-
-    //handle show img chooser
-    const handleShowImgChooser = () => {
-        setImgChooser('dashboard__user__request__changing__img');
-    }
-
     //handle show info chooser
     const handleShowInfoChooser = () => {
         setInfoChooser('dashboard__user__request__changing__info');
-    }
-
-    //img chooser request img submit
-    const changeOnClick = (e) => {
-        e.preventDefault();
-
-        if (userImage === '') {
-            alert("Vui long chon anh");
-        }
-        else {
-            const formData = new FormData();
-
-            formData.append("userImage", userImage);
-
-            axios
-                .put(`http://localhost:4000/user/update/img/${currentuser._id}`, formData)
-                .then(res => {
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-
-            alert("Image Updated Succesfully!!");
-            setImgChooser('dashboard__user__request__changing__img__hide');
-            navigate('/');
-        }
     }
 
     //info chooser request info submit
@@ -89,7 +44,6 @@ function UserInfo({ currentuser }) {
                 });
 
             alert("Your Info's been Updated Succesfully!!");
-            setInfoChooser('dashboard__user__request__changing__info__hide');
             navigate('/')
         }
     }
@@ -114,71 +68,12 @@ function UserInfo({ currentuser }) {
                     alt='...'
                 />}
 
-            <div className='dashboard__user__image__container'>
-                {/* User Avatar part */}
-                {currentuser.userImage ?
-                    <img
-                        className={imgstate}
-                        onMouseOver={handleAppear}
-                        onMouseOut={handleHide}
-                        src={`/uploads/${currentuser.userImage}`}
-                        alt='...'
-                    />
-                    :
-                    <img
-                        className={imgstate}
-                        onMouseOver={handleAppear}
-                        onMouseOut={handleHide}
-                        src={`/uploads/nonuser.png`}
-                        alt='...'
-                    />}
-
-                {hoverstate && user &&
-                    <div onMouseOver={handleAppear} onMouseOut={handleAppear} className='dashboard__user__image__file'>
-                        <CameraAltOutlinedIcon onClick={handleShowImgChooser} fontSize='large' />
-                    </div>}
-            </div>
-
-            <div className={imgchooser}>
-                <HighlightOffIcon
-                    onClick={() => setImgChooser('dashboard__user__request__changing__img__hide')}
-                    fontSize="large"
-                    style={{
-                        "cursor": "pointer",
-                        "float": "right",
-                        "marginTop": "10px",
-                        "marginRight": "10px"
-                    }}
-                />
-                <div>
-                    <div className="add__form">
-                        <form onSubmit={changeOnClick} encType='multipart/form-data'>
-                            <h1>Change Profile Image</h1>
-                            <br></br>
-
-                            <div className="form__group">
-                                <label htmlFor='file'>Choose your image</label>
-                                <br></br>
-                                <input
-                                    onChange={(e) => setUserImage(e.target.files[0])}
-                                    className='form__control__file'
-                                    type="file"
-                                    filename='novelImage'
-                                />
-                            </div>
-
-                            <button type="submit" >
-                                Post
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <ChangeUserAvatar currentuser={currentuser}/>
 
             <div className='dashboard__user__info'>
                 {/* User Name part*/}
                 <div className='dashboard__user__name'>
-                    <h2 style={{"textAlign": "left"}}>Hello {currentuser.name}</h2>
+                    <h2 style={{ "textAlign": "left" }}>Hello {currentuser.name}</h2>
                 </div>
 
                 {/* User about me part */}
