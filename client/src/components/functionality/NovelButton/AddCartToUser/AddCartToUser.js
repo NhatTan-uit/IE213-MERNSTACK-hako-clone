@@ -1,9 +1,12 @@
 import React from 'react'
 import { useDataLayerValue } from '../../../../DataLayer'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function AddCartToUser({ user }) {
     const [{ cart, carttotal }, dispatch] = useDataLayerValue();
+
+    const navigation = useNavigate();
 
     const handleAddCartToUser = () => {
         if (window.confirm("Ban co chac muon thanh toan?")) {
@@ -28,6 +31,15 @@ function AddCartToUser({ user }) {
                             .post(`http://localhost:4000/user/addcart/${user}`, cartToUser)
                             .then(res => {
                                 alert(res.data);
+                                navigation('/');
+                                dispatch({
+                                    type: 'SET_CART',
+                                    cart: []
+                                })
+                                dispatch({
+                                    type: 'SET_CART_TOTAL_PRICE',
+                                    cart: 0
+                                })
                             })
                             .catch(err => {
                                 console.log(err);
