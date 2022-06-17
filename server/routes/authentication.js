@@ -37,6 +37,9 @@ router.put("/changepassword/:id", (req, res) => {
         .catch(err => res.status(400).json(`Err: ${err}`))
 });
 
+
+//REQUEST FIND USER BY ID AND UPDATE USER AVATAR
+
 router.put("/update/img/:id", upload.single("userImage"), (req, res) => {
     Users.findById(req.params.id)
         .then(user => {
@@ -45,6 +48,22 @@ router.put("/update/img/:id", upload.single("userImage"), (req, res) => {
             user
                 .save()
                 .then(() => res.json("User Image Updated Successfully"))
+                .catch(err => res.status(400).json(`Err: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Err: ${err}`))
+});
+
+//REQUEST FIND USER BY ID AND UPDATE USER NAME
+
+router.put("/update/info/:id", (req, res) => {
+    Users.findById(req.params.id)
+        .then(user => {
+            user.name = req.body.name;
+            user.aboutme = req.body.aboutme;
+
+            user
+                .save()
+                .then(() => res.json("User Name Updated Successfully"))
                 .catch(err => res.status(400).json(`Err: ${err}`))
         })
         .catch(err => res.status(400).json(`Err: ${err}`))

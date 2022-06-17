@@ -7,6 +7,8 @@ import Novels from '../Novels/Novels'
 function MainPage() {
   const [{ novels }, dispatch] = useDataLayerValue();
 
+  const userid = localStorage.getItem('user');
+
   useLayoutEffect(() => {
     axios
       .get('http://localhost:4000/novels')
@@ -15,6 +17,17 @@ function MainPage() {
         novels: res.data
       }))
       .catch(err => console.log(err));
+
+    axios.get(`http://localhost:4000/user/${userid}`)
+      .then(res => {
+        dispatch({
+          type: 'SET_LOGGED_USER',
+          user: res.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
   return (
