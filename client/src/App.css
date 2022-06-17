@@ -260,6 +260,8 @@
     background-color: white;
     color: black;
     font-weight: bold;
+    border: 0.5px solid gray;
+    border-radius: 5px;
     z-index: 100;
 }
 

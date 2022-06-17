@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import CartHistory from './CartHistory/CartHistory';
-import UserChangePass from './UserChangePass/UserChangePass';
+import ChangeUserPw from '../../functionality/ChangUserPw/ChangeUserPw'
 import UserInfo from './UserInfo/UserInfo';
 
 function DashBoard() {
@@ -18,7 +18,7 @@ function DashBoard() {
             <CartHistory />
           </div>
           <div className="mainpage__col__small flex__first">
-            <UserChangePass />
+            <ChangeUserPw />
           </div>
         </div>
       </div>
