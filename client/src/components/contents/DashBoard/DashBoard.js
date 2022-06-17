@@ -6,7 +6,6 @@ import UserInfo from './UserInfo/UserInfo';
 
 function DashBoard() {
   const location = useLocation();
-
   console.log(location);
 
   return (

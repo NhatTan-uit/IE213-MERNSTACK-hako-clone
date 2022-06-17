@@ -24,7 +24,8 @@ function AddCartToUser({ user }) {
                     if (check) {
                         const cartToUser = {
                             usercart: cart,
-                            totalcartprice: carttotal
+                            totalcartprice: carttotal,
+                            cartstatus: false
                         };
 
                         axios
@@ -38,7 +39,7 @@ function AddCartToUser({ user }) {
                                 })
                                 dispatch({
                                     type: 'SET_CART_TOTAL_PRICE',
-                                    cart: 0
+                                    carttotal: 0
                                 })
                             })
                             .catch(err => {

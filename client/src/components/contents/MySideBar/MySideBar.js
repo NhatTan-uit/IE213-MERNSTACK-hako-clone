@@ -31,7 +31,7 @@ function MySideBar() {
                 </div>
                 {user && <Link className='sidebar__items' to="/cart">Cart History</Link>}
                 {user && user.usertype && <InsertNovel />}
-                {user && <Link state={user} className='sidebar__items' to="/dashboard">
+                {user && !user.usertype && <Link state={user} className='sidebar__items' to="/cart">
                     <div className="cart__number">
                         {cart.length}
                     </div>

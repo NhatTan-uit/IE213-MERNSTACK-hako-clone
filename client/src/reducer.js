@@ -9,7 +9,7 @@ export const initialState = {
     sidebarState: false,
     colortoggleState: false,
     user: null,
-    
+    allusers: null,
 };
 
 /* state is object attribute, action is for setting its value */
@@ -53,6 +53,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 user: action.user
+            }
+        case 'SET_ALL_USERS':
+            return {
+                ...state,
+                allusers: action.allusers
             }
         case 'SET_FILTER_DATA':
             return {

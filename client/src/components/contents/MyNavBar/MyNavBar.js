@@ -27,6 +27,7 @@ function MyNavBar() {
       user: null,
     });
     localStorage.removeItem('user');
+    localStorage.removeItem('userrole');
     alert("Logout succesfully");
     setUserDropDown('nav__user__dropdown__hide');
   }
@@ -54,7 +55,7 @@ function MyNavBar() {
           {user && user.usertype && <div className="nav__items">
             <InsertNovel />
           </div>}
-          {user && <div className="nav__cart__number">
+          {user && !user.usertype && <div className="nav__cart__number">
             <Link state={user} className='nav__cart__number__link' to="/cart">
               <div className="cart__number">
                 {cart.length}

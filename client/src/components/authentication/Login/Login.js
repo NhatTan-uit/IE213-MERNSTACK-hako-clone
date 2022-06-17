@@ -40,6 +40,9 @@ function Login() {
                         user: res.data.user
                     })
                     localStorage.setItem('user', res.data.user._id)
+                    if (res.data.user.usertype) {
+                        localStorage.setItem('userrole', res.data.user.usertype)
+                    }
                     alert(res.data.message)
                     navigate('/')
                 })

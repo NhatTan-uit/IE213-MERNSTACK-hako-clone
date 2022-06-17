@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const cartSchema = new Schema({
     usercart: [],
-    totalcartprice: { type: Number }
+    totalcartprice: { type: Number },
+    cartstatus: { type: Boolean }
 })
 
 const Carts = mongoose.model("Carts", cartSchema);

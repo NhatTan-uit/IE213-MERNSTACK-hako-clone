@@ -5,7 +5,7 @@ import { useDataLayerValue } from '../../../DataLayer'
 import Novels from '../Novels/Novels'
 
 function MainPage() {
-  const [{ novels }, dispatch] = useDataLayerValue();
+  const [{ user, allusers, novels }, dispatch] = useDataLayerValue();
 
   const userid = localStorage.getItem('user');
 
@@ -17,7 +17,6 @@ function MainPage() {
         novels: res.data
       }))
       .catch(err => console.log(err));
-
     axios.get(`http://localhost:4000/user/${userid}`)
       .then(res => {
         dispatch({

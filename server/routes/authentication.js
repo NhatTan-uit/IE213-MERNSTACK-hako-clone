@@ -3,6 +3,7 @@ const router = express.Router();
 const Users = require('../models/authentication');
 const UserCart = require('../models/usercart');
 const multer = require("multer");
+const mongoose = require('mongoose');
 
 //multer for image locate
 const storage = multer.diskStorage({
@@ -15,6 +16,13 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage });
+
+//REQUEST GET ALL USERS FOR ADMIN
+router.get("/admin", (req, res) => {
+    Users.find()
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+});
 
 //REQUEST FIND USER BY ID
 router.get("/:id", (req, res) => {
@@ -142,7 +150,8 @@ router.post("/admin/register", (req, res) => {
 router.post("/addcart/:id", (req, res) => {
     const newUserCart = new UserCart({
         usercart: req.body.usercart,
-        totalcartprice: req.body.totalcartprice
+        totalcartprice: req.body.totalcartprice,
+        cartstatus: req.body.cartstatus
     })
 
     Users.findById(req.params.id)
@@ -154,5 +163,19 @@ router.post("/addcart/:id", (req, res) => {
         })
         .catch(err => res.status(400).json(`Error: ${err}`))
 })
+
+//REQUEST FIND USER BY ID AND UPDATE CART STATUS (SUBDOCUMENT)
+router.put("/admin/cart/update/:id/:_id", (req, res) => {
+    Users.findOneAndUpdate(
+        { "_id": mongoose.Types.ObjectId(req.params.id), "cart._id": mongoose.Types.ObjectId(req.params._id) },
+        {
+            "$set": {
+                "cart.$.cartstatus": req.body.cartstatus,
+            }
+        }
+    )
+        .then(() => res.json("Cart Status Updated Succesfully"))
+        .catch(err => res.status(400).json(`Err: ${err}`))
+});
 
 module.exports = router;

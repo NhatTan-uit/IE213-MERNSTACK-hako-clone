@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 function App() {
-  const [{ user, colortoggleState, sidebarState, novelitem }, dispatch] = useDataLayerValue();
+  const [{ user, allusers, colortoggleState, sidebarState, novelitem }, dispatch] = useDataLayerValue();
 
   const userid = localStorage.getItem('user');
   const pagecolorid = localStorage.getItem('pagecolor');
@@ -42,6 +42,14 @@ function App() {
         colortoggleState: true,
       });
     }
+
+    axios
+      .get('http://localhost:4000/user/admin')
+      .then(res => dispatch({
+        type: 'SET_ALL_USERS',
+        allusers: res.data
+      }))
+      .catch(err => console.log(err));
   }, [])
 
   return (

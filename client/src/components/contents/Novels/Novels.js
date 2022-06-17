@@ -7,6 +7,10 @@ import AddToCart from '../../functionality/NovelButton/AddToCart/AddToCart';
 function Novels() {
   const [{ novels }, dispatch] = useDataLayerValue();
 
+  const userrole = localStorage.getItem('userrole');
+
+  console.log(userrole);
+
   return (
     <div>
       {novels.map((novel, key) => (
@@ -19,9 +23,9 @@ function Novels() {
           </Link>
           <h4>{novel.authorname}</h4>
           <h4>{novel.novelprice}</h4>
-          <div className="novel__btn__item">
+          {!userrole && <div className="novel__btn__item">
             <AddToCart novel={novel} />
-          </div>
+          </div>}
         </div>
       ))}
     </div>
