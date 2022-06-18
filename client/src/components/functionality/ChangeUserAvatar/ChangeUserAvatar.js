@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDataLayerValue } from '../../../DataLayer';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 function ChangeUserAvatar({ currentuser }) {
-    const [{ user }, dispatch] = useDataLayerValue();
+    const location = useLocation();
 
     const [imgchooser, setImgChooser] = useState('dashboard__user__request__changing__img__hide');
     const [hoverstate, setHoverState] = useState(false);
@@ -76,7 +76,7 @@ function ChangeUserAvatar({ currentuser }) {
                         alt='...'
                     />}
 
-                {hoverstate && user &&
+                {location.state.user._id === currentuser._id && hoverstate &&
                     <div onMouseOver={handleAppear} onMouseOut={handleAppear} className='dashboard__user__image__file'>
                         <CameraAltOutlinedIcon onClick={handleShowImgChooser} fontSize='large' />
                     </div>}

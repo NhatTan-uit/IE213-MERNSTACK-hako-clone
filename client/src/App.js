@@ -12,6 +12,7 @@ function App() {
 
   const userid = localStorage.getItem('user');
   const pagecolorid = localStorage.getItem('pagecolor');
+  const userrole = localStorage.getItem('userrole');
 
   useEffect(() => {
     //get user
@@ -33,7 +34,7 @@ function App() {
       sidebarState: false,
     });
 
-    if (pagecolorid == "light") {
+    if (pagecolorid === "light") {
       dispatch({
         type: 'SET_COLORTOGGLE',
         colortoggleState: false,
@@ -46,13 +47,15 @@ function App() {
       });
     }
 
-    axios
-      .get('http://localhost:4000/user/admin')
-      .then(res => dispatch({
-        type: 'SET_ALL_USERS',
-        allusers: res.data
-      }))
-      .catch(err => console.log(err));
+    if (userrole) {
+      axios
+        .get('http://localhost:4000/user/admin')
+        .then(res => dispatch({
+          type: 'SET_ALL_USERS',
+          allusers: res.data
+        }))
+        .catch(err => console.log(err));
+    }
   }, [])
 
   return (

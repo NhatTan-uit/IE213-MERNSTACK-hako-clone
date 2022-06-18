@@ -49,7 +49,7 @@ function Register() {
             <div className='mainpage'>
                 <div className="add__form">
                     <form onSubmit={changeOnClick} encType='multipart/form-data'>
-                        <h1>Login</h1>
+                        <h1>Register</h1>
                         <p style={{color: 'red'}}>{errmessage}</p>
                         <label htmlFor="name">Your Name</label>
                         <input onChange={e => setName(e.target.value)} type='text' className='' placeholder="Enter Your Name" />

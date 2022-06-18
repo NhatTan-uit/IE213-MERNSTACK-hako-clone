@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import UpdateNovel from '../../../functionality/NovelButton/UpdateNovel/UpdateNovel'
 import DeleteNovel from '../../../functionality/NovelButton/DeleteNovel/DeleteNovel'
@@ -11,8 +10,8 @@ function Novel() {
     const [{ user }] = useDataLayerValue();
 
     let x = 'novel__btn__nonuser';
-    if (user){
-        if (user.usertype){
+    if (user) {
+        if (user.usertype) {
             x = 'novel__btn';
         }
         else x = 'novel__btn__nonuser'
@@ -20,10 +19,6 @@ function Novel() {
     else x = 'novel__btn__nonuser'
 
     const location = useLocation();
-
-    useEffect(() => {
-        console.log("location of my novel", location)
-    }, [])
 
     return (
         <div className="mainpage__background__color">
@@ -54,6 +49,15 @@ function Novel() {
                             <DeleteNovel novel={location.state._id} />
                         </div>
                     </div>
+                </div>
+                <div className='comment__novel'>
+                    {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
+                    <form className='comment__novel__form'>
+                        <input></input>
+                        <textarea rows="3"></textarea>
+
+                        <button>Send</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -6,12 +6,12 @@ import UserInfo from './UserInfo/UserInfo';
 
 function DashBoard() {
   const location = useLocation();
-  console.log(location);
+  console.log("user",location);
 
   return (
     <div className="mainpage__background__color">
       <div className='mainpage'>
-        <UserInfo currentuser={location.state} />
+        <UserInfo currentuser={location.state.user} />
         <div className="mainpage__container">
           <div className="mainpage__col__big flex__order__second">
             <CartHistory />
