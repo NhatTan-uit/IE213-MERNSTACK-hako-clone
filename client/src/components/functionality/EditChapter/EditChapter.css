@@ -30,3 +30,21 @@
     padding: 10px 15px;
     border: 1px solid transparent;
 }
+
+@media screen and (max-width: 1000px) {
+    .edit-chapter{ 
+        width: 70vw;
+    }
+    .form-edit-chapter {
+        width: 66vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .edit-chapter{ 
+        width: 80vw;
+    }
+    .form-edit-chapter {
+        width: 70vw;
+    }
+}

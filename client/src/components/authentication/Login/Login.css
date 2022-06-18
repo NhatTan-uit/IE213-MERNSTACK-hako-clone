@@ -14,3 +14,21 @@
     width: 24vw;
 }
 
+@media screen and (max-width: 1000px) {
+    .login{ 
+        width: 70vw;
+    }
+    .form-login {
+        width: 66vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login{ 
+        width: 80vw;
+    }
+    .form-login {
+        width: 70vw;
+    }
+}
+

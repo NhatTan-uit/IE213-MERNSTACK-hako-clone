@@ -125,7 +125,7 @@ function Novel() {
 
                 <div className={x3}>
                     <div className={x4}>
-                        <h4>List of Chapter</h4>
+                        <h3>Danh sách các chương đọc thử</h3>
                     </div>
 
                     <div className='read__novel__form__body'>
@@ -151,40 +151,45 @@ function Novel() {
                     </div>
                 </div>
 
-                <div className='comment__novel'>
-                    {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
-                    <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
-                        {user && <label>Chào bạn {user.name}</label>}
+                <div className={x3}>
+                    <div className={x4}>
+                        <h3>Bình luận</h3>
+                    </div>
+                    <div className='comment__novel'>
+                        {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
+                        <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
+                            {user && <label>Chào bạn {user.name}</label>}
 
-                        <textarea value={comment ?? ""} onChange={e => setComment(e.target.value)} rows="5"></textarea>
+                            <textarea value={comment ?? ""} onChange={e => setComment(e.target.value)} rows="5"></textarea>
 
-                        {user && <button type="submit">Send</button>}
-                    </form>
+                            {user && <button type="submit">Send</button>}
+                        </form>
 
-                    {location.state && location.state.comments && location.state.comments.slice(0).reverse().map((comment, key2) => (
-                        <div className='comment__novel__user__comments' key={key2}>
-                            {comment.crruserImg ?
-                                <img
-                                    style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
-                                    src={`/uploads/${comment.crruserImg}`}
-                                    alt='...'
-                                />
-                                :
-                                <img
-                                    style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
-                                    src={`/uploads/nonuser.png`}
-                                    alt='...'
-                                />}
+                        {location.state && location.state.comments && location.state.comments.slice(0).reverse().map((comment, key2) => (
+                            <div className='comment__novel__user__comments' key={key2}>
+                                {comment.crruserImg ?
+                                    <img
+                                        style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
+                                        src={`/uploads/${comment.crruserImg}`}
+                                        alt='...'
+                                    />
+                                    :
+                                    <img
+                                        style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
+                                        src={`/uploads/nonuser.png`}
+                                        alt='...'
+                                    />}
 
-                            <a
-                                onClick={() => getCrrUser(comment.userid)}
-                                style={{ "cursor": "pointer", "color": "black", "textDecoration": "none" }}
-                                to='/dashboard'>
-                                <h4>{comment.crrusername}</h4>
-                            </a>
-                            <p>{comment.usercomment}</p>
-                        </div>
-                    ))}
+                                <a
+                                    onClick={() => getCrrUser(comment.userid)}
+                                    style={{ "cursor": "pointer", "color": "black", "textDecoration": "none" }}
+                                    to='/dashboard'>
+                                    <h4>{comment.crrusername}</h4>
+                                </a>
+                                <p>{comment.usercomment}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

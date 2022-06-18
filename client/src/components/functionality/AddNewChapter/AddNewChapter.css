@@ -15,3 +15,21 @@
     width: 36vw ;
 }
 
+@media screen and (max-width: 1000px) {
+    .add-new-chapter{ 
+        width: 70vw;
+    }
+    .form-add-new-chapter {
+        width: 66vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .add-new-chapter{ 
+        width: 80vw;
+    }
+    .form-add-new-chapter {
+        width: 70vw;
+    }
+}
+

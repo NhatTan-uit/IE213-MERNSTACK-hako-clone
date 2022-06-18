@@ -438,7 +438,7 @@
     color: var(--text-color-light) !important;
 }
 
-.mainpage__background__color__dark textarea {
+.mainpage__background__color__dark input, .mainpage__background__color__dark textarea {
     background-color: var(--nav-color-dark);
 }
 
@@ -716,27 +716,41 @@
 }
 
 .read__novel__form {
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid var(--text-color-light);
     display: flex;
     flex-direction: column;
 }
 
 .read__novel__form__dark {
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: 1px solid var(--text-color-dark);
     display: flex;
     flex-direction: column;
 }
 
 .read__novel__form__header {
+    padding: 20px 30px;
     background-color: var(--nav-color-light);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 7px;
 }
 
 .read__novel__form__header__dark {
+    padding: 20px 30px;
     background-color: var(--nav-color-dark);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-radius: 7px;
+}
+
+.read__novel__form__body {
+    padding: 20px 30px;
+}
+
+.read__novel__form__body * {
+    margin-bottom: 12px;
 }
 
 @media screen and (max-width: 1000px) {

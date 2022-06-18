@@ -19,3 +19,21 @@
     width: 128px !important;
     padding: auto !important;
 } */
+
+@media screen and (max-width: 1000px) {
+    .register{ 
+        width: 70vw;
+    }
+    .form-register {
+        width: 66vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .register{ 
+        width: 80vw;
+    }
+    .form-register {
+        width: 70vw;
+    }
+}
