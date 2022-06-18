@@ -15,16 +15,19 @@ function App() {
 
   useEffect(() => {
     //get user
-    axios.get(`http://localhost:4000/user/${userid}`)
-      .then(res => {
-        dispatch({
-          type: 'SET_LOGGED_USER',
-          user: res.data
+    if (userid) {
+      axios.get(`http://localhost:4000/user/${userid}`)
+        .then(res => {
+          dispatch({
+            type: 'SET_LOGGED_USER',
+            user: res.data
+          })
         })
-      })
-      .catch(err => {
-        console.log(err);
-      });
+        .catch(err => {
+          console.log(err);
+        });
+    }
+
     dispatch({
       type: 'SET_SIDEBARSTATE',
       sidebarState: false,

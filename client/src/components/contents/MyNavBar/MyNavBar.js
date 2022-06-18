@@ -9,7 +9,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 
 function MyNavBar() {
-  const [{ user, cart, colortoggleState, filterData }, dispatch] = useDataLayerValue();
+  const [{ user, cart, allusers, colortoggleState, filterData }, dispatch] = useDataLayerValue();
   const [userdropdown, setUserDropDown] = useState('nav__user__dropdown__hide');
 
   let x1 = '';
@@ -111,7 +111,7 @@ function MyNavBar() {
           <div className='nav__user__name'>
             <Link
               onClick={() => setUserDropDown('nav__user__dropdown__hide')}
-              state={user}
+              state={{user: user, allusers: allusers}}
               to='/dashboard'>
               My profile
             </Link>
