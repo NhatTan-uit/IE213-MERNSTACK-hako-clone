@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 function Novel() {
     const userid = localStorage.getItem('user');
 
-    const [{ user }] = useDataLayerValue();
+    const [{ user, allusers }] = useDataLayerValue();
     const [comment, setComment] = useState('');
 
     const navigate = useNavigate();
@@ -29,13 +29,24 @@ function Novel() {
     console.log("test", location)
 
     const getCrrUser = (crruserid) => {
-        axios.get(`http://localhost:4000/user/tocomment/${crruserid}`)
-            .then(res => {
-                navigate('/dashboard', { state: { user: res.data, info: true } });
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        if (userid === crruserid) {
+            axios.get(`http://localhost:4000/user/${userid}`)
+                .then(res => {
+                    navigate('/dashboard', { state: { user: res.data, allusers: allusers } });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+        else {
+            axios.get(`http://localhost:4000/user/tocomment/${crruserid}`)
+                .then(res => {
+                    navigate('/dashboard', { state: { user: res.data, info: true } });
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     }
 
     const changeOnClick = (e) => {

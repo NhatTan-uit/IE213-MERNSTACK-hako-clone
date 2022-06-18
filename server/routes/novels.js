@@ -14,10 +14,10 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, callback) => {
         callback(null, file.originalname);
-    } 
+    }
 })
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 
 //REQUEST GET ALL NOVELS
 router.get("/", (req, res) => {
@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
 
 //REQUEST GET NOVEL BY SEARCH RESULT
 router.post("/search", (req, res) => {
-    Novels.find({noveltitle : {$regex: req.body.searchResult}})
+    Novels.find({ noveltitle: { $regex: req.body.searchResult } })
         .then(novel => res.json(novel))
         .catch(err => res.status(400).json(`Error: ${err}`))
 });
@@ -102,6 +102,39 @@ router.post("/add/:id", (req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`))
 })
 
+//REQUEST FIND CHAPTER BY ID AND UPDATE
+router.put("/update/:id/:_id", (req, res) => {
+    Novels.findOneAndUpdate(
+        { "_id": mongoose.Types.ObjectId(req.params.id), "chapter._id": mongoose.Types.ObjectId(req.params._id) },
+        {
+            "$set": {
+                "chapter.$.chaptername": req.body.chaptername,
+                "chapter.$.chaptercontent": req.body.chaptercontent,
+            }
+        }
+    )
+        .then(() => res.json("Chapter Updated Succesfully"))
+        .catch(err => res.status(400).json(`Err: ${err}`))
+});
+
+//REQUEST FIND CHAPTER BY ID AND DELETE
+router.put("/:id/:_id", (req, res) => {
+    Novels.findOneAndUpdate(
+        { "_id": mongoose.Types.ObjectId(req.params.id) },
+        {
+            "$pull": {
+                "chapter": {
+                    "_id": mongoose.Types.ObjectId(req.params._id)
+                }
+            }
+        }
+    )
+        .then(() => res.json("Chapter Deleted Succesfully"))
+        .catch(err => res.status(400).json(`Err: ${err}`))
+});
+
+//COMMENT SUBDOCUMENT
+
 //REQUEST FIND NOVEL BY ID AND ADD COMMENT (SUBDOCUMENT)
 
 router.post("/add/comment/:id", (req, res) => {
@@ -122,34 +155,14 @@ router.post("/add/comment/:id", (req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`))
 })
 
-//REQUEST FIND CHAPTER BY ID AND UPDATE
-router.put("/update/:id/:_id", (req, res) => {
-    Novels.findOneAndUpdate(
-        { "_id": mongoose.Types.ObjectId(req.params.id), "chapter._id": mongoose.Types.ObjectId(req.params._id) },
+router.put("/user/update/comment/img/", (req, res) => {
+    Novels.updateMany(
+        { "comments.userid": mongoose.Types.ObjectId(req.body.userid) },
         {
-            "$set": {
-                "chapter.$.chaptername": req.body.chaptername,
-                "chapter.$.chaptercontent": req.body.chaptercontent,
-            }
+            "$set": { "comments.crruserImg": req.body.crruserImg }
         }
     )
-        .then(() => res.json("Chapter Updated Succesfully"))
-        .catch(err => res.status(400).json(`Err: ${err}`))
-});
-
-//REQUEST FIND CHAPTER BY ID AND DELETE
-router.put("/:id/:_id", (req, res) => {
-    Novels.findOneAndUpdate(
-        { "_id": mongoose.Types.ObjectId(req.params.id)},
-        {
-            "$pull": {
-                "chapter": {
-                    "_id": mongoose.Types.ObjectId(req.params._id)
-                }
-            }
-        }
-    )
-        .then(() => res.json("Chapter Deleted Succesfully"))
+        .then(() => res.json("Comment User Avatar Updated Succesfully"))
         .catch(err => res.status(400).json(`Err: ${err}`))
 });
 

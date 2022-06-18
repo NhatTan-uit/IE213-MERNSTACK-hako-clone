@@ -39,11 +39,22 @@ function ChangeUserAvatar({ user }) {
         }
         else {
             const formData = new FormData();
-
             formData.append("userImage", userImage);
+
+            const formData1 = new FormData();
+            formData1.append("userid", user.currentuser._id);
+            formData1.append("crruserImg", userImage.name);
 
             axios
                 .put(`http://localhost:4000/user/update/img/${user.currentuser._id}`, formData)
+                .then(res => {
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+            axios
+                .put(`http://localhost:4000/novels/user/update/comment/img`, formData1)
                 .then(res => {
                 })
                 .catch(err => {
