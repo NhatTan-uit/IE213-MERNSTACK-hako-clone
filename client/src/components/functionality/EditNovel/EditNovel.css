@@ -21,12 +21,3 @@
 .form-edit-novel textarea{
     margin-bottom: 15px;
 }
-
-.edit-novel-title {
-    text-align: center;
-    color: #333333;
-    background-color: #f5f5f5;
-    border-color: #dddddd;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-}
