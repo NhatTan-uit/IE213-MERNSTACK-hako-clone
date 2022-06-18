@@ -7,7 +7,8 @@ const novelsSchema = new Schema({
     authorname: { type: String, required: true },
     novelImage: { type: String, required: true },
     novelprice: { type: Number, required: true },
-    chapter: []
+    chapter: [],
+    comments: []
 });
 
 const Novels = mongoose.model("Novels", novelsSchema);

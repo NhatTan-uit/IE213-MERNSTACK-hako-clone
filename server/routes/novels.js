@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Novels = require("../models/novels");
 const Chapters = require("../models/chapters");
+const Comments = require("../models/usercomment");
 const mongoose = require('mongoose');
 const multer = require("multer");
 
@@ -96,6 +97,24 @@ router.post("/add/:id", (req, res) => {
             novel.chapter.push(newChapter);
             novel.save()
                 .then(() => res.json("Chapter Posted Success!!!"))
+                .catch(err => res.status(400).json(`Error: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`))
+})
+
+//REQUEST FIND NOVEL BY ID AND ADD COMMENT (SUBDOCUMENT)
+
+router.post("/add/comment/:id", (req, res) => {
+    const newComment = new Comments({
+        userid: req.body.userid,
+        usercomment: req.body.usercomment
+    })
+
+    Novels.findById(req.params.id)
+        .then(novel => {
+            novel.comments.push(newComment);
+            novel.save()
+                .then(() => res.json("Comment Posted Success!!!"))
                 .catch(err => res.status(400).json(`Error: ${err}`))
         })
         .catch(err => res.status(400).json(`Error: ${err}`))

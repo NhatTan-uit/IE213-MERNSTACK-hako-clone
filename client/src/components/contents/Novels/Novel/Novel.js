@@ -5,10 +5,14 @@ import DeleteNovel from '../../../functionality/NovelButton/DeleteNovel/DeleteNo
 import { Link } from 'react-router-dom'
 import InsertChapter from '../../../functionality/NovelButton/InsertChapter/InsertChapter'
 import { useDataLayerValue } from '../../../../DataLayer'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Novel() {
     const [{ user }] = useDataLayerValue();
     const [comment, setComment] = useState('');
+
+    const navigate = useNavigate();
 
     let x = 'novel__btn__nonuser';
     if (user) {
@@ -24,7 +28,27 @@ function Novel() {
     const changeOnClick = (e) => {
         e.preventDefault();
 
-        alert("OK")
+        const usercomment = {
+            userid: user._id,
+            usercomment: comment
+        }
+
+        if (comment !== '') {
+            axios
+                .post(`http://localhost:4000/novels/add/comment/${location.state._id}`, usercomment)
+                .then(res => {
+                    navigate('/');
+                    window.location.reload();
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+            alert("Comment Posted Succesfully!!")
+        }
+        else {
+            alert("Vui lòng nhập bình luận trước khi gửi");
+        }
     }
 
     return (
@@ -61,11 +85,18 @@ function Novel() {
                     {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
                     <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
                         {user && <label>Chào bạn {user.username}</label>}
-                        
+
                         <textarea value={comment ?? ""} onChange={e => setComment(e.target.value)} rows="5"></textarea>
 
-                        <button type="submit">Send</button>
+                        {user && <button type="submit">Send</button>}
                     </form>
+
+                    {location.state && location.state.comments && location.state.comments.slice(0).reverse().map((comment, key2) => (
+                        <div className='comment__novel__user__comments' key={key2}>
+                            <h4>{comment.userid}</h4>
+                            <p>{comment.usercomment}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
