@@ -17,12 +17,18 @@ function Novel() {
     const navigate = useNavigate();
 
     let x1 = '';
+    let x2 = '';
+    let x3 = '';
 
     if (colortoggleState) {
         x1 = 'mainpage__background__color__dark';
+        x2 = 'read__novel__dark';
+        x3 = 'read__novel__form__dark';
     }
     else {
         x1 = 'mainpage__background__color';
+        x2 = 'read__novel';
+        x3 = 'read__novel__form';
     }
 
     let x = 'novel__btn__nonuser';
@@ -89,13 +95,37 @@ function Novel() {
     return (
         <div className={x1}>
             <div className='mainpage'>
-                <div className="read__novel">
-                    <img src={`/uploads/${location.state.novelImage}`} alt='...' />
-                    <h1>{location.state.noveltitle}</h1>
-                    <p>{location.state.novelcontent}</p>
-                    <h1>{location.state.authorname}</h1>
-                    <div>
+                <div className='mainpage__header__img__shadow'></div>
+                {colortoggleState ?
+                    <div className='mainpage__header__img'>
+                        <img src={`/uploads/Dark-theme.png`} alt='' />
+                    </div>
+                    :
+                    <div className='mainpage__header__img'>
+                        <img src={`/uploads/Light-theme.png`} alt='' />
+                    </div>
+                }
+
+                <div className={x2}>
+                    <div className='read__novel__image'>
+                        <img src={`/uploads/${location.state.novelImage}`} alt='...' />
+                    </div>
+
+                    <div className='read__novel__info'>
+                        <h1>{location.state.noveltitle}</h1>
+                        <h3>Nội dung: </h3>
+                        <p>{location.state.novelcontent}</p>
+                        <h3>Tác giả: </h3>
+                        <p>{location.state.authorname}</p>
+                    </div>
+                </div>
+
+                <div className={x3}>
+                    <div className='read__novel__form__header'>
                         <h4>List of Chapter</h4>
+                    </div>
+
+                    <div className='read__novel__form__body'>
                         {location.state.chapter.map((chap, key) => (
                             <div className='chapter__list__container' key={key}>
                                 <Link state={{ chap: chap, novelid: location.state._id }} to={{
@@ -104,6 +134,7 @@ function Novel() {
                             </div>
                         ))}
                     </div>
+
                     <div className={x} >
                         <div className='novel__btn__item'>
                             <InsertChapter novel={location.state._id} />
@@ -116,6 +147,7 @@ function Novel() {
                         </div>
                     </div>
                 </div>
+
                 <div className='comment__novel'>
                     {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
                     <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
