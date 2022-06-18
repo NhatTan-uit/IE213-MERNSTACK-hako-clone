@@ -9,20 +9,20 @@ function Novels() {
 
   const userrole = localStorage.getItem('userrole');
 
-  console.log(userrole);
-
   return (
-    <div>
+    <div className='mainpage__novel'>
       {novels.map((novel, key) => (
         <div className='novel__container' key={key}>
           <img src={`/uploads/${novel.novelImage}`} alt='...' />
-          <Link state={novel} to={{
+
+          <Link className='novel__title' state={novel} to={{
             pathname: `/novels/${novel._id}`
           }}>
             <h4>{novel.noveltitle}</h4>
           </Link>
-          <h4>{novel.authorname}</h4>
-          <h4>{novel.novelprice}</h4>
+
+
+          <h4>Thành tiền: {novel.novelprice}</h4>
           {!userrole && <div className="novel__btn__item">
             <AddToCart novel={novel} />
           </div>}

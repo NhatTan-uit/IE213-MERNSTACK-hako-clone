@@ -48,7 +48,10 @@ function MyNavBar() {
               filterData: []
             })
           }} to="/">
-            <img src='' alt='' />
+            {colortoggleState ?
+              <img src={`/uploads/logoweb.png`} alt='' />
+              :
+              <img src={`/uploads/logoweb2.png`} alt='' />}
           </Link>
         </div>
 
@@ -112,7 +115,7 @@ function MyNavBar() {
           <div className='nav__user__name'>
             <Link
               onClick={() => setUserDropDown('nav__user__dropdown__hide')}
-              state={{user: user, allusers: allusers}}
+              state={{ user: user, allusers: allusers }}
               to='/dashboard'>
               My profile
             </Link>

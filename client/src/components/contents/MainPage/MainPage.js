@@ -3,9 +3,10 @@ import axios from 'axios';
 import { useLayoutEffect } from 'react';
 import { useDataLayerValue } from '../../../DataLayer'
 import Novels from '../Novels/Novels'
+import RecentlyComments from '../RecentlyComments/RecentlyComments';
 
 function MainPage() {
-  const [{ user, allusers, novels }, dispatch] = useDataLayerValue();
+  const [{ user, allusers, novels, colortoggleState }, dispatch] = useDataLayerValue();
 
   const userid = localStorage.getItem('user');
 
@@ -35,14 +36,21 @@ function MainPage() {
   return (
     <div className="mainpage__background__color">
       <div className='mainpage'>
+        {colortoggleState ?
+          <div>
+            <img src={`/uploads/Dark-theme.png`} alt='' />
+          </div>
+          :
+          <div>
+            <img src={`/uploads/Light-theme.png`} alt='' />
+          </div>
+        }
         <div className="mainpage__container">
           <div className="mainpage__col__big">
-            <div className='mainpage__novel'>
-              <Novels />
-            </div>
+            <Novels />
           </div>
           <div className="mainpage__col__small">
-            <p>Im small col</p>
+            <RecentlyComments />
           </div>
         </div>
       </div>
