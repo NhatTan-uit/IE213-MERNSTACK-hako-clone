@@ -4,12 +4,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDataLayerValue } from '../../../DataLayer';
 import { Link } from 'react-router-dom';
+
 import './Login.css';
 
 function Login() {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const [{ user }, dispatch] = useDataLayerValue();
+    const [{ user, allusers, novels, colortoggleState }, dispatch] = useDataLayerValue();
 
     const uname = useRef();
     const upass = useRef();
@@ -65,25 +66,38 @@ function Login() {
         }
     }
 
+    let x1 = '';
+
+    if (colortoggleState) {
+        x1 = 'mainpage__background__color__dark';
+    }
+    else {
+        x1 = 'mainpage__background__color';
+    }
+
     return (
-        <div className='login'>
-            <div className='login-title'>
-                <h2>Login</h2>
-            </div>
-            <div className="add__form form-login">
-                <form onSubmit={changeOnClick} encType='multipart/form-data'>
-                    
-                    <label htmlFor="username">Username</label>
-                    <input ref={uname} onChange={e => setUserName(e.target.value)} type='text' className='' placeholder="Enter Your Username" />
-                    <label htmlFor="userpass">Password</label>
-                    <input ref={upass} onChange={e => setPassword(e.target.value)} type='password' className='' placeholder="Enter Your Password" />
+        <div className={x1}>
+            <div className='mainpage'>
+                <div className='login'>
+                    <div className='form-title'>
+                        <h2>Login</h2>
+                    </div>
+                    <div className="add__form form-login">
+                        <form onSubmit={changeOnClick} encType='multipart/form-data'>
+                            
+                            <label htmlFor="username">Username</label>
+                            <input ref={uname} onChange={e => setUserName(e.target.value)} type='text' className='' placeholder="Enter Your Username" />
+                            <label htmlFor="userpass">Password</label>
+                            <input ref={upass} onChange={e => setPassword(e.target.value)} type='password' className='' placeholder="Enter Your Password" />
 
-                    <label>Doesn't have an account? <Link to='/register'>Register</Link></label>
+                            <label>Doesn't have an account? <Link to='/register'>Register</Link></label>
 
-                    <button type="submit" >
-                        Login
-                    </button>
-                </form>
+                            <button type="submit" >
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     )
