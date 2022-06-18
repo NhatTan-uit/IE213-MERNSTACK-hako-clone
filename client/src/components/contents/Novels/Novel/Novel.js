@@ -19,16 +19,19 @@ function Novel() {
     let x1 = '';
     let x2 = '';
     let x3 = '';
+    let x4 = '';
 
     if (colortoggleState) {
         x1 = 'mainpage__background__color__dark';
         x2 = 'read__novel__dark';
         x3 = 'read__novel__form__dark';
+        x4 = 'read__novel__form__header__dark';
     }
     else {
         x1 = 'mainpage__background__color';
         x2 = 'read__novel';
         x3 = 'read__novel__form';
+        x4 = 'read__novel__form__header';
     }
 
     let x = 'novel__btn__nonuser';
@@ -121,7 +124,7 @@ function Novel() {
                 </div>
 
                 <div className={x3}>
-                    <div className='read__novel__form__header'>
+                    <div className={x4}>
                         <h4>List of Chapter</h4>
                     </div>
 

@@ -723,7 +723,15 @@
 }
 
 .read__novel__form__header {
+    background-color: var(--nav-color-light);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.read__novel__form__header__dark {
     background-color: var(--nav-color-dark);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 @media screen and (max-width: 1000px) {
