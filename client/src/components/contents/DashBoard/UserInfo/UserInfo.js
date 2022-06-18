@@ -2,16 +2,16 @@ import React from 'react'
 import ChangeUserAvatar from '../../../functionality/ChangeUserAvatar/ChangeUserAvatar';
 import ChangeUserInfo from '../../../functionality/ChangeUserInfo/ChangeUserInfo';
 
-function UserInfo({ currentuser }) {
+function UserInfo({ user }) {
     return (
         <div className="mainpage__header">
             {/* user background color */}
-            {currentuser.userBgImage ?
+            {user.currentuser && user.currentuser.userBgImage ?
                 <img
                     className="dashboard__user__bgimage"
                     // onMouseOver={handleAppear}
                     // onMouseOut={handleHide}
-                    src={`/uploads/${currentuser.userBgImage}`}
+                    src={`/uploads/${user.currentuser.userBgImage}`}
                     alt='...'
                 />
                 :
@@ -23,9 +23,9 @@ function UserInfo({ currentuser }) {
                     alt='...'
                 />}
 
-            <ChangeUserAvatar currentuser={currentuser} />
+            <ChangeUserAvatar user={{ currentuser: user.currentuser, info: user.info }} />
 
-            <ChangeUserInfo currentuser={currentuser} />
+            <ChangeUserInfo cuser={{ currentuser: user.currentuser, info: user.info }} />
 
         </div>
     )

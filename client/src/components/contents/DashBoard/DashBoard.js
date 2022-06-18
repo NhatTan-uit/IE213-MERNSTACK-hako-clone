@@ -6,18 +6,18 @@ import UserInfo from './UserInfo/UserInfo';
 
 function DashBoard() {
   const location = useLocation();
-  console.log("user",location);
+  console.log("user", location);
 
   return (
     <div className="mainpage__background__color">
       <div className='mainpage'>
-        <UserInfo currentuser={location.state.user} />
+        <UserInfo user={{ currentuser: location.state.user, info: location.state.info }} />
         <div className="mainpage__container">
           <div className="mainpage__col__big flex__order__second">
-            <CartHistory />
+            {!location.state.info && <CartHistory />}
           </div>
           <div className="mainpage__col__small flex__first">
-            <ChangeUserPw />
+            {!location.state.info && <ChangeUserPw />}
           </div>
         </div>
       </div>

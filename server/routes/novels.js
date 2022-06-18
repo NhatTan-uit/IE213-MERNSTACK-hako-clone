@@ -107,6 +107,8 @@ router.post("/add/:id", (req, res) => {
 router.post("/add/comment/:id", (req, res) => {
     const newComment = new Comments({
         userid: req.body.userid,
+        crrusername: req.body.crrusername,
+        crruserImg: req.body.crruserImg,
         usercomment: req.body.usercomment
     })
 

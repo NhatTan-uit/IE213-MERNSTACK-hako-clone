@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDataLayerValue } from '../../../DataLayer';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-function ChangeUserInfo({ currentuser }) {
+function ChangeUserInfo({ cuser }) {
+    const userid = localStorage.getItem('user');
     const [{ user }, dispatch] = useDataLayerValue();
 
     const [infochooser, setInfoChooser] = useState('dashboard__user__request__changing__info__hide');
@@ -34,7 +35,7 @@ function ChangeUserInfo({ currentuser }) {
             }
 
             axios
-                .put(`http://localhost:4000/user/update/info/${currentuser._id}`, newuserinfo)
+                .put(`http://localhost:4000/user/update/info/${cuser.currentuser._id}`, newuserinfo)
                 .then(res => {
                 })
                 .catch(err => {
@@ -50,15 +51,15 @@ function ChangeUserInfo({ currentuser }) {
         <div className='dashboard__user__info'>
             {/* User Name part*/}
             <div className='dashboard__user__name'>
-                <h2 style={{ "textAlign": "left" }}>Hello {currentuser.name}</h2>
+                <h2 style={{ "textAlign": "left" }}>Hello {cuser.currentuser.name}</h2>
             </div>
 
             {/* User about me part */}
             <div className='dashboard__user__info__child'>
                 <div className='dashboard__user__about'>
-                    {currentuser.aboutme ?
+                    {cuser.currentuser.aboutme ?
                         <div>
-                            {currentuser.aboutme}
+                            {cuser.currentuser.aboutme}
                         </div> :
                         <div>
                             Hello to the world
@@ -66,9 +67,9 @@ function ChangeUserInfo({ currentuser }) {
                 </div>
 
                 {/* button change user info */}
-                <div className='dashboard__user__info__change__button'>
+                {userid === cuser.currentuser._id && <div className='dashboard__user__info__change__button'>
                     <button onClick={handleShowInfoChooser}>change profile</button>
-                </div>
+                </div>}
             </div>
 
             <div className={infochooser}>

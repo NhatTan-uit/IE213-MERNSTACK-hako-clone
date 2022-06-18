@@ -31,6 +31,13 @@ router.get("/:id", (req, res) => {
         .catch(err => res.status(400).json(`Err ${err}`))
 });
 
+//REQUEST FIND USER BY ID AND ONLY RETURN SOME FIELD
+router.get("/tocomment/:id", (req, res) => {
+    Users.findById(req.params.id, 'name usertype userImage aboutme')
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(`Err ${err}`))
+});
+
 //REQUEST FIND USER BY ID AND CHANGE PASSWORD
 router.put("/changepassword/:id", (req, res) => {
     Users.findById(req.params.id)

@@ -541,6 +541,7 @@
     margin: 20px 0px;
 }
 
+/***novel comment start***/
 .comment__novel {
     display: flex;
     margin: 20px;
@@ -549,16 +550,19 @@
     align-items: center;
     flex-direction: column;
 }
+
 .comment__novel__form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
 }
+
 .comment__novel__form * {
     display: block;
     margin: 10px;
-} 
+}
+
 .comment__novel__form textarea {
     width: 94%;
     padding: 10px;
@@ -570,6 +574,13 @@
     margin: 10px;
     padding: 10px;
     align-self: flex-start;
+    width: 50vw;
+}
+
+@media screen and (max-width: 450px) {
+    .comment__novel__user__comments {
+        width: 70vw;
+    }
 }
 
 .comment__novel__form button {
@@ -583,6 +594,7 @@
 .comment__novel__form button:hover {
     background-color: aquamarine;
 }
+/***novel comment end***/
 
 /**novel page end**/
 
@@ -605,6 +617,7 @@
     left: 5%;
     top: 150px
 }
+
 .dashboard__user__image {
     width: 200px;
     height: 200px;
@@ -614,6 +627,7 @@
     transform: scale(1.0);
     transition: transform 0.4s;
 }
+
 .dashboard__user__image__hover {
     width: 200px;
     height: 200px;
@@ -623,6 +637,7 @@
     opacity: 0.7;
     transition: transform 0.4s;
 }
+
 @media screen and (max-width: 1000px) {
 
     .dashboard__user__image,
@@ -630,11 +645,13 @@
         width: 150px;
         height: 150px;
     }
+
     .dashboard__user__image__container {
         left: 5%;
         top: 180px
     }
 }
+
 @media screen and (max-width: 700px) {
 
     .dashboard__user__image,
@@ -642,11 +659,13 @@
         width: 110px;
         height: 110px;
     }
+
     .dashboard__user__image__container {
         left: 5%;
         top: 200px
     }
 }
+
 .dashboard__user__image__file {
     position: absolute;
     cursor: pointer;
@@ -656,6 +675,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 .dashboard__user__request__changing__img,
 .dashboard__user__request__changing__info {
     left: 50%;
@@ -668,6 +688,7 @@
     border-radius: 10px;
     border: 0.5px solid grey;
 }
+
 .dashboard__user__request__changing__img__hide,
 .dashboard__user__request__changing__info__hide {
     left: 50%;
@@ -681,6 +702,7 @@
     border-radius: 10px;
     border: 0.5px solid grey;
 }
+
 /****img****/
 /***user image end***/
 
@@ -704,6 +726,7 @@
         flex-direction: column;
         align-items: flex-start;
     }
+
     .dashboard__user__info__child * {
         margin-bottom: 5px;
     }
@@ -719,6 +742,7 @@
 .dashboard__user__name * {
     display: flex;
 }
+
 /****name****/
 
 /****about****/
@@ -727,6 +751,7 @@
     white-space: pre-line;
     max-width: 500px;
 }
+
 /****about****/
 
 /****button****/
@@ -744,9 +769,11 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 .dashboard__user__info__change__button button:hover {
     background-color: rgb(130, 229, 232);
 }
+
 /****button****/
 
 /***user info end***/

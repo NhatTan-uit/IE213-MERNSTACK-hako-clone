@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useDataLayerValue } from '../../../DataLayer';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-function ChangeUserAvatar({ currentuser }) {
+function ChangeUserAvatar({ user }) {
+    const userid = localStorage.getItem('user');
     const location = useLocation();
 
     const [imgchooser, setImgChooser] = useState('dashboard__user__request__changing__img__hide');
@@ -43,7 +43,7 @@ function ChangeUserAvatar({ currentuser }) {
             formData.append("userImage", userImage);
 
             axios
-                .put(`http://localhost:4000/user/update/img/${currentuser._id}`, formData)
+                .put(`http://localhost:4000/user/update/img/${user.currentuser._id}`, formData)
                 .then(res => {
                 })
                 .catch(err => {
@@ -59,12 +59,12 @@ function ChangeUserAvatar({ currentuser }) {
         <div>
             <div className='dashboard__user__image__container'>
                 {/* User Avatar part */}
-                {currentuser.userImage ?
+                {user.currentuser.userImage ?
                     <img
                         className={imgstate}
                         onMouseOver={handleAppear}
                         onMouseOut={handleHide}
-                        src={`/uploads/${currentuser.userImage}`}
+                        src={`/uploads/${user.currentuser.userImage}`}
                         alt='...'
                     />
                     :
@@ -76,7 +76,7 @@ function ChangeUserAvatar({ currentuser }) {
                         alt='...'
                     />}
 
-                {location.state.user._id === currentuser._id && hoverstate &&
+                {userid === user.currentuser._id && hoverstate &&
                     <div onMouseOver={handleAppear} onMouseOut={handleAppear} className='dashboard__user__image__file'>
                         <CameraAltOutlinedIcon onClick={handleShowImgChooser} fontSize='large' />
                     </div>}

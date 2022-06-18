@@ -9,6 +9,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function Novel() {
+    const userid = localStorage.getItem('user');
+
     const [{ user }] = useDataLayerValue();
     const [comment, setComment] = useState('');
 
@@ -24,12 +26,25 @@ function Novel() {
     else x = 'novel__btn__nonuser'
 
     const location = useLocation();
+    console.log("test", location)
+
+    const getCrrUser = (crruserid) => {
+        axios.get(`http://localhost:4000/user/tocomment/${crruserid}`)
+            .then(res => {
+                navigate('/dashboard', { state: { user: res.data, info: true } });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 
     const changeOnClick = (e) => {
         e.preventDefault();
 
         const usercomment = {
             userid: user._id,
+            crrusername: user.name,
+            crruserImg: user.userImage,
             usercomment: comment
         }
 
@@ -37,14 +52,14 @@ function Novel() {
             axios
                 .post(`http://localhost:4000/novels/add/comment/${location.state._id}`, usercomment)
                 .then(res => {
+
+                    alert("Comment Posted Succesfully!!")
                     navigate('/');
                     window.location.reload();
                 })
                 .catch(err => {
                     console.log(err);
                 });
-
-            alert("Comment Posted Succesfully!!")
         }
         else {
             alert("Vui lòng nhập bình luận trước khi gửi");
@@ -84,7 +99,7 @@ function Novel() {
                 <div className='comment__novel'>
                     {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
                     <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
-                        {user && <label>Chào bạn {user.username}</label>}
+                        {user && <label>Chào bạn {user.name}</label>}
 
                         <textarea value={comment ?? ""} onChange={e => setComment(e.target.value)} rows="5"></textarea>
 
@@ -93,7 +108,25 @@ function Novel() {
 
                     {location.state && location.state.comments && location.state.comments.slice(0).reverse().map((comment, key2) => (
                         <div className='comment__novel__user__comments' key={key2}>
-                            <h4>{comment.userid}</h4>
+                            {comment.crruserImg ?
+                                <img
+                                    style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
+                                    src={`/uploads/${comment.crruserImg}`}
+                                    alt='...'
+                                />
+                                :
+                                <img
+                                    style={{ "height": "30px", "width": "30px", "borderRadius": "50%" }}
+                                    src={`/uploads/nonuser.png`}
+                                    alt='...'
+                                />}
+
+                            <a
+                                onClick={() => getCrrUser(comment.userid)}
+                                style={{ "cursor": "pointer", "color": "black", "textDecoration": "none" }}
+                                to='/dashboard'>
+                                <h4>{comment.crrusername}</h4>
+                            </a>
                             <p>{comment.usercomment}</p>
                         </div>
                     ))}
