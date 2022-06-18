@@ -1,7 +1,6 @@
 .register{ 
     width: 36vw;
-    margin: auto;
-    margin-top: 2.7vw;
+    margin: 2.7vw auto;
     border: 1px solid transparent;
     border-color: #ddd;
     /* background-color: white; */
@@ -15,17 +14,8 @@
     width: 24vw;
 }
 
-.register-title {
-    text-align: center;
-    color: #333333;
-    background-color: #f5f5f5;
-    border-color: #dddddd;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-}
-
-.register-button {
+/* .register-button {
     height: 48px !important;
     width: 128px !important;
     padding: auto !important;
-}
+} */
