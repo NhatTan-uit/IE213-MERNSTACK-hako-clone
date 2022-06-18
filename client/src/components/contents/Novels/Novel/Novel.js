@@ -37,6 +37,7 @@ function Novel() {
             axios
                 .post(`http://localhost:4000/novels/add/comment/${location.state._id}`, usercomment)
                 .then(res => {
+                    navigate('/');
                     window.location.reload();
                 })
                 .catch(err => {
