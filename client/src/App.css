@@ -559,8 +559,9 @@
     display: block;
     margin: 10px;
 } 
-.comment__novel__form input, textarea {
+.comment__novel__form textarea {
     width: 94%;
+    padding: 10px;
 }
 
 .comment__novel__form button {

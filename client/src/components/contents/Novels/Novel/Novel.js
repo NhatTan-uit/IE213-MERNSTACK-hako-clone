@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import UpdateNovel from '../../../functionality/NovelButton/UpdateNovel/UpdateNovel'
 import DeleteNovel from '../../../functionality/NovelButton/DeleteNovel/DeleteNovel'
@@ -8,6 +8,7 @@ import { useDataLayerValue } from '../../../../DataLayer'
 
 function Novel() {
     const [{ user }] = useDataLayerValue();
+    const [comment, setComment] = useState('');
 
     let x = 'novel__btn__nonuser';
     if (user) {
@@ -19,6 +20,12 @@ function Novel() {
     else x = 'novel__btn__nonuser'
 
     const location = useLocation();
+
+    const changeOnClick = (e) => {
+        e.preventDefault();
+
+        alert("OK")
+    }
 
     return (
         <div className="mainpage__background__color">
@@ -52,11 +59,12 @@ function Novel() {
                 </div>
                 <div className='comment__novel'>
                     {!user && <p style={{ "alignSelf": "flex-start", "margin": "10px" }}>Vui lòng <Link to='/authentication'>đăng nhập</Link> hoặc <Link to='/register'>đăng ký</Link> để sử dụng chức năng này</p>}
-                    <form className='comment__novel__form'>
-                        <input></input>
-                        <textarea rows="3"></textarea>
+                    <form onSubmit={changeOnClick} encType='multipart/form-data' className='comment__novel__form'>
+                        {user && <label>Chào bạn {user.username}</label>}
+                        
+                        <textarea value={comment ?? ""} onChange={e => setComment(e.target.value)} rows="5"></textarea>
 
-                        <button>Send</button>
+                        <button type="submit">Send</button>
                     </form>
                 </div>
             </div>

@@ -29,6 +29,7 @@ function MyNavBar() {
     localStorage.removeItem('user');
     localStorage.removeItem('userrole');
     alert("Logout succesfully");
+    window.location.reload();
     setUserDropDown('nav__user__dropdown__hide');
   }
 

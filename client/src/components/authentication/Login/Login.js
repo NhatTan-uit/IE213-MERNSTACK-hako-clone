@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,15 @@ function Login() {
     const upass = useRef();
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispatch({
+            type: 'SET_LOGGED_USER',
+            user: null,
+        });
+        localStorage.removeItem('user');
+        localStorage.removeItem('userrole');
+    }, []);
 
     const changeOnClick = (e) => {
         e.preventDefault();
@@ -45,6 +54,7 @@ function Login() {
                     }
                     alert(res.data.message)
                     navigate('/')
+                    window.location.reload();
                 })
                 .catch(err => {
                     console.log(err);

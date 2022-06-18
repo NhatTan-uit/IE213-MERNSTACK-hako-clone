@@ -15,32 +15,37 @@ function Register() {
     const changeOnClick = (e) => {
         e.preventDefault();
 
-        if (password === cpassword) {
-            const user = {
-                name,
-                username,
-                password
-            };
-
-            axios
-                .post(`http://localhost:4000/user/register/`, user)
-                .then(res => {
-                    if (res.data === "User is already existed") {
-                        alert(res.data)
-                        setErrMessage("Please change Your Name or Username")
-                    }
-                    else {
-                        alert(res.data)
-                        navigate('/authentication')
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+        if (name === '' || username === '' || password === '' || cpassword === '') {
+            alert("Vui lòng nhập đầy đủ thông tin");
         }
         else {
-            alert("Wrong confirm password");
-            setErrMessage("Please check your confirm password")
+            if (password === cpassword) {
+                const user = {
+                    name,
+                    username,
+                    password
+                };
+
+                axios
+                    .post(`http://localhost:4000/user/register/`, user)
+                    .then(res => {
+                        if (res.data === "User is already existed") {
+                            alert(res.data)
+                            setErrMessage("Please change Your Name or Username")
+                        }
+                        else {
+                            alert(res.data)
+                            navigate('/authentication')
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+            else {
+                alert("Wrong confirm password");
+                setErrMessage("Please check your confirm password")
+            }
         }
     }
 
@@ -50,7 +55,7 @@ function Register() {
                 <div className="add__form">
                     <form onSubmit={changeOnClick} encType='multipart/form-data'>
                         <h1>Register</h1>
-                        <p style={{color: 'red'}}>{errmessage}</p>
+                        <p style={{ color: 'red' }}>{errmessage}</p>
                         <label htmlFor="name">Your Name</label>
                         <input onChange={e => setName(e.target.value)} type='text' className='' placeholder="Enter Your Name" />
                         <label htmlFor="username">Username</label>
