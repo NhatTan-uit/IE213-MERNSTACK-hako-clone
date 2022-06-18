@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Register.css'
 
 function Register() {
     const [errmessage, setErrMessage] = useState('');
@@ -50,27 +51,29 @@ function Register() {
     }
 
     return (
-        <div className="mainpage__background__color">
-            <div className='mainpage'>
-                <div className="add__form">
-                    <form onSubmit={changeOnClick} encType='multipart/form-data'>
-                        <h1>Register</h1>
-                        <p style={{ color: 'red' }}>{errmessage}</p>
-                        <label htmlFor="name">Your Name</label>
-                        <input onChange={e => setName(e.target.value)} type='text' className='' placeholder="Enter Your Name" />
-                        <label htmlFor="username">Username</label>
-                        <input onChange={e => setUserName(e.target.value)} type='text' className='' placeholder="Enter Your Username" />
-                        <label htmlFor="userpass">Password</label>
-                        <input onChange={e => setPassword(e.target.value)} type='password' className='' placeholder="Enter Your Password" />
-                        <label htmlFor="confirmpass">Confirm Password</label>
-                        <input onChange={e => setConfirmPassword(e.target.value)} type='password' className='' placeholder="Confirm Your Password" />
-
-                        <button type="submit" >
-                            Register
-                        </button>
-                    </form>
-                </div>
+        <div className="register">
+            <div className='register-title'>
+                <h2>Register</h2>
             </div>
+            <div className="add__form form-register">
+                <form onSubmit={changeOnClick} encType='multipart/form-data'>
+                    
+                    <p style={{ color: 'red' }}>{errmessage}</p>
+                    <label htmlFor="name">Your Name</label>
+                    <input onChange={e => setName(e.target.value)} type='text' className='' placeholder="Enter Your Name" />
+                    <label htmlFor="username">Username</label>
+                    <input onChange={e => setUserName(e.target.value)} type='text' className='' placeholder="Enter Your Username" />
+                    <label htmlFor="userpass">Password</label>
+                    <input onChange={e => setPassword(e.target.value)} type='password' className='' placeholder="Enter Your Password" />
+                    <label htmlFor="confirmpass">Confirm Password</label>
+                    <input onChange={e => setConfirmPassword(e.target.value)} type='password' className='' placeholder="Confirm Your Password" />
+
+                    <button type="submit" className='register-button' >
+                        Register
+                    </button>
+                </form>
+            </div>
+            
         </div>
     )
 }
