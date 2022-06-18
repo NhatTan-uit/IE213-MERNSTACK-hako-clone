@@ -20,7 +20,6 @@ function EditNovel() {
             setTitle(location.state.noveltitle);
             setContent(location.state.novelcontent);
             setAuthorName(location.state.authorname);
-            setNovelImage(location.state.novelImage);
             setNovelPrice(location.state.novelprice);
         }
     }, []);
@@ -30,26 +29,32 @@ function EditNovel() {
     };
 
     const changeOnClick = (e) => {
-        e.preventDefault();
+        if (novelImage === '') {
+            e.preventDefault();
+            alert("Vui lòng chọn hình ảnh")
+        }
+        else {
+            e.preventDefault();
 
-        const formData = new FormData();
-
-        formData.append("noveltitle", noveltitle);
-        formData.append("novelcontent", novelcontent);
-        formData.append("authorname", authorname);
-        formData.append("novelImage", novelImage);
-        formData.append("novelprice", novelprice);
-
-        axios
-            .put(`http://localhost:4000/novels/update/${location.state._id}`, formData)
-            .then(res => {
-                navigate('/')
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
-        alert("Updated Successfully!!");
+            const formData = new FormData();
+    
+            formData.append("noveltitle", noveltitle);
+            formData.append("novelcontent", novelcontent);
+            formData.append("authorname", authorname);
+            formData.append("novelImage", novelImage);
+            formData.append("novelprice", novelprice);
+    
+            axios
+                .put(`http://localhost:4000/novels/update/${location.state._id}`, formData)
+                .then(res => {
+                    navigate('/')
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+    
+            alert("Updated Successfully!!");
+        }
     };
 
     return (

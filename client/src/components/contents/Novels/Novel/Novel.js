@@ -11,10 +11,19 @@ import { useNavigate } from 'react-router-dom'
 function Novel() {
     const userid = localStorage.getItem('user');
 
-    const [{ user, allusers }] = useDataLayerValue();
+    const [{ user, allusers, colortoggleState }] = useDataLayerValue();
     const [comment, setComment] = useState('');
 
     const navigate = useNavigate();
+
+    let x1 = '';
+
+    if (colortoggleState) {
+        x1 = 'mainpage__background__color__dark';
+    }
+    else {
+        x1 = 'mainpage__background__color';
+    }
 
     let x = 'novel__btn__nonuser';
     if (user) {
@@ -78,7 +87,7 @@ function Novel() {
     }
 
     return (
-        <div className="mainpage__background__color">
+        <div className={x1}>
             <div className='mainpage'>
                 <div className="read__novel">
                     <img src={`/uploads/${location.state.novelImage}`} alt='...' />
