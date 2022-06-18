@@ -2,6 +2,16 @@
 
 Check out admin branches for mern stack build
 
+## How to start
+
+### cd to server folder
+
+npm run dev
+
+### or
+
+manually start by yourself, check client side and server side below
+
 ## Client side
 
 In the client directory, you can run:

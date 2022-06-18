@@ -1,9 +1,13 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 import { useDataLayerValue } from '../../../../DataLayer'
 import ConfirmCartStatus from '../../../functionality/NovelButton/ConfirmCartStatus/ConfirmCartStatus';
 
 function CartHistory() {
     const [{ user, allusers }, dispatch] = useDataLayerValue();
+
+    const location = useLocation();
+    console.log("my user location", location);
 
     return (
         <div className="carthistory__container">
