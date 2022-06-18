@@ -13,8 +13,18 @@ function UserCart() {
     console.log(location);
 
     function handleDecreaseQuantity(item) {
-        if (item.quantity === 0) {
-            alert("Khong the giam so luong")
+        if (item.quantity === 1) {
+            if (window.confirm("Bạn muốn xóa khỏi giỏ hàng?")) {
+                dispatch({
+                    type: "SET_CART_TOTAL_PRICE",
+                    carttotal: Number((carttotal - item.totalprice).toFixed(2))
+                });
+                dispatch({
+                    type: 'SET_CART',
+                    cart: cart.filter(i => i._id !== item._id)
+                });
+                alert("Xoa khoi gio hang thanh cong");
+            }
         }
         else {
             item.quantity -= 1;

@@ -12,31 +12,34 @@ function UserChangePass() {
     const navigate = useNavigate();
 
     const changePassword = () => {
-        if (user.password === currentpw) {
-            if (newpw === confirmpw) {
-                const pw = {
-                    password: newpw
-                }
+        if (currentpw !== '' || newpw !== '' || confirmpw !== '') {
+            if (user.password === currentpw) {
+                if (newpw === confirmpw) {
+                    const pw = {
+                        password: newpw
+                    }
 
-                axios
-                    .put(`http://localhost:4000/user/changepassword/${user._id}`, pw)
-                    .then(res => {
-                        dispatch({
-                            type: 'SET_LOGGED_USER',
-                            user: null,
+                    axios
+                        .put(`http://localhost:4000/user/changepassword/${user._id}`, pw)
+                        .then(res => {
+                            dispatch({
+                                type: 'SET_LOGGED_USER',
+                                user: null,
+                            });
+                            localStorage.removeItem('user');
+                            alert(res.data)
+                            alert("Logout succesfully");
+                            navigate('/authentication');
+                        })
+                        .catch(err => {
+                            console.log(err);
                         });
-                        localStorage.removeItem('user');
-                        alert(res.data)
-                        alert("Logout succesfully");
-                        navigate('/authentication');
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
+                }
+                else alert("Vui long xac nhan lai mat khau moi")
             }
-            else alert("Vui long xac nhan lai mat khau moi")
+            else alert("Mat khau hien tai khong dung");
         }
-        else alert("Mat khau hien tai khong dung");
+        else alert("Vui lòng nhập đủ thông tin")
     }
 
     return (

@@ -3,7 +3,7 @@ import { useDataLayerValue } from '../../../../DataLayer'
 import { useNavigate } from 'react-router-dom';
 
 function AddToCart({ novel }) {
-    const [{ user, cart }, dispatch] = useDataLayerValue();
+    const [{ user, cart, carttotal }, dispatch] = useDataLayerValue();
 
     const navigate = useNavigate();
 
@@ -32,14 +32,18 @@ function AddToCart({ novel }) {
                     novelImage: novel.novelImage,
                     authorname: novel.authorname,
                     novelprice: novel.novelprice,
-                    quantity: 0,
-                    totalprice: 0,
+                    quantity: 1,
+                    totalprice: novel.novelprice,
                 }
 
                 dispatch({
                     type: 'SET_CART',
                     cart: cart.concat(cartitem)
                 });
+                dispatch({
+                    type: 'SET_CART_TOTAL_PRICE',
+                    carttotal: carttotal + novel.novelprice
+                })
                 alert("Them vao gio hang thanh cong");
             }
             else {
