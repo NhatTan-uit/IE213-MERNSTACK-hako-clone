@@ -109,14 +109,30 @@
     display: none;
     border-radius: 10px;
     border: none;
-    color: white;
-    background-color: black;
+    color: var(--text-color-dark);
+    background-color: var(--nav-color-dark);
     padding: 10px 20px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebarbutton__dark button {
+    display: none;
+    border-radius: 10px;
+    border: none;
+    color: var(--text-color-light);
+    background-color: var(--nav-color-light);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 1000px) {
     .sidebarbutton button {
+        display: block;
+    }
+
+    .sidebarbutton__dark button {
         display: block;
     }
 
@@ -223,7 +239,13 @@
 
 .nav__login__button .login__button__link {
     text-decoration: none;
-    color: black;
+    color: var(--text-color-light);
+    margin-left: 10px;
+}
+
+.nav__login__button .login__button__link__dark {
+    text-decoration: none;
+    color: var(--text-color-dark);
     margin-left: 10px;
 }
 
@@ -254,6 +276,14 @@
     display: flex;
     justify-content: center;
     margin-right: -5px;
+}
+
+.nav__cart__icon {
+    color: var(--text-color-light);
+}
+
+.nav__cart__icon__dark {
+    color: var(--text-color-dark);
 }
 
 /*cart*/
@@ -430,16 +460,34 @@
     position: relative;
 }
 
-.mainpage__background__color__dark * {
+.mainpage__background__color * div:not(.header__style) {
+    color: var(--text-color-light);
+}
+
+.mainpage__background__color__dark * div:not(.header__style) {
     color: var(--text-color-dark);
 }
 
-.mainpage__background__color__dark .form-title h2{
+.mainpage__background__color__dark .form-title h2 {
     color: var(--text-color-light) !important;
 }
 
-.mainpage__background__color__dark input, .mainpage__background__color__dark textarea {
+.mainpage__background__color__dark input,
+.mainpage__background__color__dark textarea {
     background-color: var(--nav-color-dark);
+    color: var(--text-color-dark);
+    border: 0.5px solid white;
+    border-radius: 7px;
+    text-indent: 10px;
+}
+
+.mainpage__background__color input,
+.mainpage__background__color textarea {
+    background-color: var(--nav-color-light);
+    color: var(--text-color-light);
+    border: 0.5px solid black;
+    border-radius: 7px;
+    text-indent: 10px;
 }
 
 .mainpage {
@@ -692,6 +740,31 @@
     align-items: center;
 }
 
+.read__novel__chapter {
+    background-color: var(--nav-color-light);
+    white-space: pre-line;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.read__novel__chapter h1,
+.read__novel__chapter p {
+    margin: 20px;
+}
+
+.read__novel__chapter__dark {
+    background-color: var(--nav-color-dark);
+    white-space: pre-line;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.read__novel__chapter__dark * {
+    margin: 20px;
+}
+
 .read__novel__image img {
     margin-top: 25px;
     margin-left: 20px;
@@ -751,10 +824,24 @@
 
 .read__novel__form__body * {
     margin-bottom: 12px;
+    text-decoration: none;
+    color: var(--text-color-light);
+}
+
+.read__novel__form__body__dark {
+    padding: 20px 30px;
+}
+
+.read__novel__form__body__dark * {
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: var(--text-color-dark);
 }
 
 @media screen and (max-width: 1000px) {
-    .read__novel, .read__novel__dark {
+
+    .read__novel,
+    .read__novel__dark {
         flex-direction: column;
     }
 }
@@ -780,6 +867,10 @@
     margin: 10px;
 }
 
+.comment__novel__form button {
+    color: white;
+}
+
 .comment__novel__form textarea {
     width: 94%;
     padding: 10px;
@@ -792,6 +883,18 @@
     padding: 10px;
     align-self: flex-start;
     width: 50vw;
+}
+
+.comment__novel__user__comments * {
+    margin-bottom: 7px;
+}
+
+.comment__novel__user__name {
+    color: var(--text-color-light);
+}
+
+.comment__novel__user__name__dark {
+    color: var(--text-color-dark);
 }
 
 @media screen and (max-width: 450px) {
@@ -1060,13 +1163,16 @@
     .add__form {
         width: 80%;
     }
+
     .add__form * button {
         padding: 1px 6px !important;
         width: auto !important;
     }
+
     .mainpage .form-title {
         padding: 10px 0px;
     }
+
     .add__form .form__control__file {
         width: 110px;
         padding: 10px 0px;

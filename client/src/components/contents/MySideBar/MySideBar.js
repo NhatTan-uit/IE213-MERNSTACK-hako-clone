@@ -29,7 +29,6 @@ function MySideBar() {
                 <div className="sidebar__items">
                     <MySearchBar />
                 </div>
-                {user && <Link className='sidebar__items' to="/cart">Cart History</Link>}
                 {user && user.usertype && <InsertNovel />}
                 {user && !user.usertype && <Link state={user} className='sidebar__items' to="/cart">
                     <div className="cart__number">

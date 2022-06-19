@@ -13,12 +13,18 @@ function MyNavBar() {
   const [userdropdown, setUserDropDown] = useState('nav__user__dropdown__hide');
 
   let x1 = '';
+  let x2 = '';
+  let x3 = '';
 
   if (colortoggleState) {
     x1 = 'mynavbar__background__color__dark';
+    x2 = 'login__button__link__dark';
+    x3 = 'nav__cart__icon__dark';
   }
   else {
     x1 = 'mynavbar__background__color';
+    x2 = 'login__button__link';
+    x3 = 'nav__cart__icon';
   }
 
   const onClicked = () => {
@@ -64,7 +70,7 @@ function MyNavBar() {
               <div className="cart__number">
                 {cart.length}
               </div>
-              <ShoppingCartOutlinedIcon />
+              <ShoppingCartOutlinedIcon className={x3} />
             </Link>
           </div>}
         </div>
@@ -108,7 +114,7 @@ function MyNavBar() {
           </div>}
 
         <div className="nav__login__button">
-          {!user && <Link to='/authentication' className='login__button__link'>Login</Link>}
+          {!user && <Link to='/authentication' className={x2}>Login</Link>}
         </div>
 
         <div className={userdropdown}>

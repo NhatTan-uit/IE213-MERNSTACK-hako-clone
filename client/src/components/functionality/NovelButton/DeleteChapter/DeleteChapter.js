@@ -25,7 +25,9 @@ function DeleteChapter({ chapter }) {
 
   return (
     <div className='link'>
-      <button onClick={handleRemove}><Link className='non__decorate__router__link' to="/redirect">Delete Current Chapter</Link></button>
+      <button onClick={handleRemove}>
+        <Link className='non__decorate__router__link' to="/redirect">Delete Current Chapter</Link>
+      </button>
     </div>
   )
 }

@@ -84,13 +84,18 @@ function Login() {
                     </div>
                     <div className="add__form form-login">
                         <form onSubmit={changeOnClick} encType='multipart/form-data'>
-                            
+
                             <label htmlFor="username">Username</label>
                             <input ref={uname} onChange={e => setUserName(e.target.value)} type='text' className='' placeholder="Enter Your Username" />
                             <label htmlFor="userpass">Password</label>
                             <input ref={upass} onChange={e => setPassword(e.target.value)} type='password' className='' placeholder="Enter Your Password" />
 
-                            <label>Doesn't have an account? <Link to='/register'>Register</Link></label>
+                            <label>Doesn't have an account?
+                                <Link
+                                    style={{ "marginLeft": "15px", "textDecoration": "none", "color": "aqua" }}
+                                    to='/register'>Register
+                                </Link>
+                            </label>
 
                             <button type="submit" >
                                 Login

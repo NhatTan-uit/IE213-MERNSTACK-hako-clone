@@ -16,7 +16,7 @@ function Novels() {
           <div className='novel__container'>
             <img src={`/uploads/${novel.novelImage}`} alt='...' />
 
-            <Link className='novel__title' state={novel} to={{
+            <Link className='header__style novel__title' state={novel} to={{
               pathname: `/novels/${novel._id}`
             }}>
               <h4>{novel.noveltitle}</h4>

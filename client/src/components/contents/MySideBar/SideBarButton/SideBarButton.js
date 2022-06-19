@@ -2,7 +2,16 @@ import React from 'react'
 import { useDataLayerValue } from '../../../../DataLayer'
 
 function SideBarButton() {
-    const [{ sidebarState }, dispatch] = useDataLayerValue();
+    const [{ sidebarState, colortoggleState }, dispatch] = useDataLayerValue();
+
+    let x1 = '';
+
+    if (colortoggleState) {
+        x1 = 'sidebarbutton__dark';
+    }
+    else {
+        x1 = 'sidebarbutton';
+    }
 
     const sidebarbuttonCLicked = () => {
         dispatch({
@@ -12,7 +21,7 @@ function SideBarButton() {
     }
 
     return (
-        <div className='sidebarbutton'>
+        <div className={x1}>
             <button onClick={sidebarbuttonCLicked}>Side</button>
         </div>
     )

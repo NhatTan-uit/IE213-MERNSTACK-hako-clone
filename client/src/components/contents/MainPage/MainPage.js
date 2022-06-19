@@ -59,7 +59,7 @@ function MainPage() {
 
         <div className="mainpage__container">
           <div className="mainpage__col__big">
-            <div className='mainpage__col__title'>
+            <div className='header__style mainpage__col__title'>
               <EmojiEventsIcon
                 style={{ "color": "yellow", "marginRight": "7px" }}
               />
@@ -68,7 +68,7 @@ function MainPage() {
             <Novels />
           </div>
           <div className="mainpage__col__small">
-            <div className='mainpage__col__title'>Thảo luận</div>
+            <div className='header__style mainpage__col__title'>Thảo luận</div>
             <RecentlyComments />
           </div>
         </div>

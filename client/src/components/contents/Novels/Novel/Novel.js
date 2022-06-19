@@ -20,18 +20,24 @@ function Novel() {
     let x2 = '';
     let x3 = '';
     let x4 = '';
+    let x5 = '';
+    let x6 = '';
 
     if (colortoggleState) {
         x1 = 'mainpage__background__color__dark';
         x2 = 'read__novel__dark';
         x3 = 'read__novel__form__dark';
         x4 = 'read__novel__form__header__dark';
+        x5 = 'read__novel__form__body__dark';
+        x6 = 'comment__novel__user__name__dark';
     }
     else {
         x1 = 'mainpage__background__color';
         x2 = 'read__novel';
         x3 = 'read__novel__form';
         x4 = 'read__novel__form__header';
+        x5 = 'read__novel__form__body';
+        x6 = 'comment__novel__user__name';
     }
 
     let x = 'novel__btn__nonuser';
@@ -121,6 +127,7 @@ function Novel() {
                         <h3>Tác giả: </h3>
                         <p>{location.state.authorname}</p>
                     </div>
+                    <br></br>
                 </div>
 
                 <div className={x3}>
@@ -128,12 +135,14 @@ function Novel() {
                         <h3>Danh sách các chương đọc thử</h3>
                     </div>
 
-                    <div className='read__novel__form__body'>
+                    <div className={x5}>
                         {location.state.chapter.map((chap, key) => (
-                            <div className='chapter__list__container' key={key}>
-                                <Link state={{ chap: chap, novelid: location.state._id }} to={{
-                                    pathname: `/novels/${location.state._id}/${chap._id}`
-                                }}>{chap.chaptername}</Link>
+                            <div key={key}>
+                                <Link
+                                    state={{ chap: chap, novelid: location.state._id }}
+                                    to={{
+                                        pathname: `/novels/${location.state._id}/${chap._id}`
+                                    }}>{chap.chaptername}</Link>
                             </div>
                         ))}
                     </div>
@@ -184,7 +193,7 @@ function Novel() {
                                     onClick={() => getCrrUser(comment.userid)}
                                     style={{ "cursor": "pointer", "color": "black", "textDecoration": "none" }}
                                     to='/dashboard'>
-                                    <h4>{comment.crrusername}</h4>
+                                    <h4 className={x6}>{comment.crrusername}</h4>
                                 </a>
                                 <p>{comment.usercomment}</p>
                             </div>

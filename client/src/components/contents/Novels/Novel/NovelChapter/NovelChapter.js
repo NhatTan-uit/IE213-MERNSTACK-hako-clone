@@ -6,11 +6,23 @@ import DeleteChapter from '../../../../functionality/NovelButton/DeleteChapter/D
 import { useDataLayerValue } from '../../../../../DataLayer';
 
 function NovelChapter() {
-    const [{ user }] = useDataLayerValue();
+    const [{ user, colortoggleState }] = useDataLayerValue();
+
+    let x1 = '';
+    let x2 = '';
+
+    if (colortoggleState) {
+        x1 = 'mainpage__background__color__dark';
+        x2 = 'read__novel__chapter__dark';
+    }
+    else {
+        x1 = 'mainpage__background__color';
+        x2 = 'read__novel__chapter';
+    }
 
     let x = 'novel__btn__nonuser';
-    if (user){
-        if (user.usertype){
+    if (user) {
+        if (user.usertype) {
             x = 'novel__btn';
         }
         else x = 'novel__btn__nonuser'
@@ -24,17 +36,17 @@ function NovelChapter() {
     }, [])
 
     return (
-        <div className="mainpage__background__color">
+        <div className={x1}>
             <div className='mainpage'>
-                <div className="read__novel">
+                <div className={x2}>
                     <h1>{location.state.chap.chaptername}</h1>
                     <p>{location.state.chap.chaptercontent}</p>
                     <div className={x}>
                         <div className="novel__btn__item">
-                            <UpdateChapter chapter={location.state}/>
+                            <UpdateChapter chapter={location.state} />
                         </div>
                         <div className="novel__btn__item">
-                            <DeleteChapter chapter={location.state}/>
+                            <DeleteChapter chapter={location.state} />
                         </div>
                     </div>
                 </div>
