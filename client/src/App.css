@@ -594,6 +594,7 @@
 
 /*form css*/
 /**form start**/
+
 .add__form {
     min-width: 80px;
     width: 80%;
@@ -1051,7 +1052,20 @@
     height: auto;
     width: 70vw;
     position: absolute;
-    background-color: white;
+    background-color: var(--body-color-light);
+    border-radius: 10px;
+    border: 0.5px solid grey;
+}
+
+.dashboard__user__request__changing__img__dark,
+.dashboard__user__request__changing__info__dark {
+    left: 50%;
+    top: 350px;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 70vw;
+    position: absolute;
+    background-color: var(--body-color-light);
     border-radius: 10px;
     border: 0.5px solid grey;
 }
@@ -1064,10 +1078,22 @@
     display: none;
     height: auto;
     width: 70vw;
+    background-color: var(--body-color-light);
     position: absolute;
-    background-color: white;
     border-radius: 10px;
-    border: 0.5px solid grey;
+}
+
+.dashboard__user__request__changing__img__hide__dark,
+.dashboard__user__request__changing__info__hide__dark {
+    left: 50%;
+    top: 350px;
+    transform: translate(-50%, -50%);
+    display: none;
+    height: auto;
+    width: 70vw;
+    background-color: var(--body-color-light);
+    position: absolute;
+    border-radius: 10px;
 }
 
 /****img****/
@@ -1346,4 +1372,56 @@
     border: 0.5px solid var(--text-color-dark);
     border-radius: 7px;
     margin: 20px;
+}
+
+.carthistory__body__container * {
+    margin: 7px;
+}
+
+.carthistory__body__container__dark * {
+    margin: 7px;
+}
+
+.carthistory__body__body__item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.carthistory__body__body__item__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.carthistory__body__body__item img {
+    width: 14vw;
+    height: auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .carthistory__body__body__item {
+        flex-direction: column;
+        align-items: center;
+    }
+    .carthistory__body__body__item__info {
+        align-items: flex-start;
+    }
+    .carthistory__body__body__item img {
+        width: 30vw;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .carthistory__body__body__item {
+        flex-direction: column;
+        align-items: center;
+    }
+    .carthistory__body__body__item__info {
+        align-items: flex-start;
+    }
+    .carthistory__body__body__item img {
+        width: 40vw;
+        height: auto;
+    }
 }

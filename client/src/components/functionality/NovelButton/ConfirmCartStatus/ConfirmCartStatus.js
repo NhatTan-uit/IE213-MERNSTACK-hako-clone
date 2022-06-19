@@ -20,7 +20,7 @@ function ConfirmCartStatus({ cartstate }) {
                         console.log(err);
                     });
 
-                alert("Thanh toan thanh cong");
+                alert("Thanh toán thành công");
                 navigation('/');
                 window.location.reload();
             }
@@ -28,7 +28,7 @@ function ConfirmCartStatus({ cartstate }) {
     }
     return (
         <div className='link'>
-            <button onClick={handleConfirmCart}>Confirm User Cart</button>
+            <button onClick={handleConfirmCart}>Xác nhận thanh toán</button>
         </div>
     )
 }

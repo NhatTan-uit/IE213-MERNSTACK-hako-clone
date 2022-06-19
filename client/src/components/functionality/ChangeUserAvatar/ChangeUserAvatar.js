@@ -3,15 +3,26 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { useDataLayerValue } from '../../../DataLayer';
 
 function ChangeUserAvatar({ user }) {
+    const [{ colortoggleState }, dispatch] = useDataLayerValue();
     const userid = localStorage.getItem('user');
     const location = useLocation();
 
     const [imgchooser, setImgChooser] = useState('dashboard__user__request__changing__img__hide');
+    const [imgchooserdark, setImgChooserDark] = useState('dashboard__user__request__changing__img__hide__dark');
     const [hoverstate, setHoverState] = useState(false);
     const [userImage, setUserImage] = useState('');
     const [imgstate, setImgState] = useState('dashboard__user__image');
+
+    let x1 = '';
+
+    if (colortoggleState) {
+        x1 = imgchooser;
+    }
+    else x1 = imgchooserdark;
+
 
     const navigate = useNavigate();
 
@@ -27,7 +38,10 @@ function ChangeUserAvatar({ user }) {
 
     //handle show img chooser
     const handleShowImgChooser = () => {
-        setImgChooser('dashboard__user__request__changing__img');
+        if (colortoggleState) {
+            setImgChooser('dashboard__user__request__changing__img');
+        }
+        else setImgChooserDark('dashboard__user__request__changing__img__dark')
     }
 
     //img chooser request img submit
@@ -93,9 +107,14 @@ function ChangeUserAvatar({ user }) {
                     </div>}
             </div>
 
-            <div className={imgchooser}>
+            <div className={x1}>
                 <HighlightOffIcon
-                    onClick={() => setImgChooser('dashboard__user__request__changing__img__hide')}
+                    onClick={() => {
+                        if (colortoggleState) {
+                            setImgChooser('dashboard__user__request__changing__img__hide');
+                        }
+                        else setImgChooserDark('dashboard__user__request__changing__img__hide__dark');
+                    }}
                     fontSize="large"
                     style={{
                         "cursor": "pointer",
@@ -104,7 +123,7 @@ function ChangeUserAvatar({ user }) {
                         "marginRight": "10px"
                     }}
                 />
-                <div>
+                <div className="add__form__except">
                     <div className="add__form">
                         <form onSubmit={changeOnClick} encType='multipart/form-data'>
                             <h1>Change Profile Image</h1>

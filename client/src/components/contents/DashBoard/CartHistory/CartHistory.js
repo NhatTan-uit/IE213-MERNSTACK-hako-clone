@@ -28,21 +28,27 @@ function CartHistory() {
                 {location.state.user && !location.state.user.usertype && <h3>Giỏ hàng của tôi</h3>}
                 {location.state.user && !location.state.user.usertype && location.state.user.cart.map((item1, key1) => (
                     <div className={x1} key={key1}>
-                        <h4>Cart id: {key1 + 1}</h4>
-                        <h4>Total price {item1.totalcartprice}</h4>
-                        {item1.cartstatus ?
-                            <h4>Da thanh toan</h4>
-                            :
-                            <h4>Chua thanh toan</h4>}
+                        <div className='carthistory__body__title'>
+                            <h4>Cart id: {key1 + 1}</h4>
+                            <h4>Tổng giá trị {item1.totalcartprice}</h4>
+                            {item1.cartstatus ?
+                                <h4>Tình trạng: Da thanh toan</h4>
+                                :
+                                <h4>Tình trạng: Chua thanh toan</h4>}
+                        </div>
 
-                        {item1.usercart && item1.usercart.map((item2, key) => (
-                            <div className='' key={key}>
-                                <img src={`/uploads/${item2.novelImage}`} alt='...' />
-                                <h4>{item2.noveltitle}</h4>
-                                <h4>{item2.authorname}</h4>
-                                <h4>{item2.quantity}</h4>
-                            </div>
-                        ))}
+                        <div className='carthistory__body__body'>
+                            {item1.usercart && item1.usercart.map((item2, key) => (
+                                <div className='carthistory__body__body__item' key={key}>
+                                    <img src={`/uploads/${item2.novelImage}`} alt='...' />
+                                    <div className='carthistory__body__body__item__info'>
+                                        <h4>{item2.noveltitle}</h4>
+                                        <h4>Tác giả: {item2.authorname}</h4>
+                                        <h4>Số lượng: {item2.quantity}</h4>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ))}
 
@@ -52,19 +58,23 @@ function CartHistory() {
                             <div>
                                 <hr></hr>
                                 <hr></hr>
-                                <h4>{item2.username}</h4>
+                                <h4>Người dùng: {item2.username}</h4>
                                 <hr></hr>
                                 {item2.cart.length !== 0 && item2.cart.map((item3, key3) => (
                                     <div key={key3}>
                                         <hr></hr>
-                                        {item3.totalcartprice}
+                                        Tổng giá trị giỏ hàng: {item3.totalcartprice}
                                         {item3.cartstatus ?
-                                            <h4>Da thanh toan</h4>
+                                            <h4>Trạng thái giao dịch: Da thanh toan</h4>
                                             :
-                                            <h4>Chua thanh toan</h4>}
+                                            <h4>Trạng thái giao dịch: Chua thanh toan</h4>}
                                         {item3.usercart.map((item4, key4) => (
                                             <div key={key4}>
-                                                {item4.noveltitle}
+                                                <i>Tựa truyện</i>: {item4.noveltitle}
+                                                <br></br>
+                                                <i>Giá thành</i>: {item4.novelprice}
+                                                <br></br>
+                                                <br></br>
                                             </div>
                                         ))}
                                         <div className='novel__btn__item'>

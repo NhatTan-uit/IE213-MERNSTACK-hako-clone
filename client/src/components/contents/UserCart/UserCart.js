@@ -59,7 +59,7 @@ function UserCart() {
                 <div className='cart__container'>
                     <h2>My Cart</h2>
                     {(cart.length !== 0) ? cart.map((item, key) => (
-                        <div className='cart__novel__container' key={key}>
+                        <div className={x2} key={key}>
                             <div className='cartitem__info__container'>
                                 <img src={`/uploads/${item.novelImage}`} alt='...' />
                             </div>
@@ -91,7 +91,7 @@ function UserCart() {
                                 </div>
                             </div>
                         </div>
-                    )) : <div className='cart__novel__container'><h4 style={{"margin" : "20px"}}>Gio hang rong</h4></div>}
+                    )) : <div className={x2}><h4 style={{"margin" : "20px"}}>Gio hang rong</h4></div>}
                     <div className="cartitem__totalprice__forpayment">
                         <p>Here is summary price {carttotal}</p>
                         <div className="novel__btn__item">
