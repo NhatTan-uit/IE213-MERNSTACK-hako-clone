@@ -45,20 +45,20 @@ function UserChangePass() {
     return (
         <div>
             <div className="change__password">
-                <h3>Change your password</h3>
+                <h3>Thay đổi mật khẩu</h3>
                 <br></br>
-                <label>Nhap mat khau hien tai</label>
-                <input type="password" onChange={e => setCurrentPw(e.target.value)} style={{ padding: '5px' }}></input>
+                <label>Nhập mật khẩu hiện tại</label>
+                <input type="password" onChange={e => setCurrentPw(e.target.value)} style={{ padding: '10px' }}></input>
                 <br></br>
-                <label>Xac nhan lai mat khau</label>
-                <input type="password" onChange={e => setNewPw(e.target.value)} style={{ padding: '5px' }}></input>
+                <label>Xác nhận lại mật khẩu</label>
+                <input type="password" onChange={e => setNewPw(e.target.value)} style={{ padding: '10px' }}></input>
                 <br></br>
-                <label>Nhap mat khau moi</label>
-                <input type="password" onChange={e => setConfirmPw(e.target.value)} style={{ padding: '5px' }}></input>
+                <label>Nhập mật khẩu mới</label>
+                <input type="password" onChange={e => setConfirmPw(e.target.value)} style={{ padding: '10px' }}></input>
                 <br></br>
                 <div className="novel__btn__item">
                     <div className='link'>
-                        <button onClick={changePassword}>Change Password</button>
+                        <button onClick={changePassword}>Đổi</button>
                     </div>
                 </div>
             </div>

@@ -543,6 +543,10 @@
     flex-wrap: wrap;
 }
 
+.mainpage__recently__comment {
+    margin: 20px;
+}
+
 .mainpage__header {
     position: relative;
     display: flex;
@@ -551,9 +555,25 @@
     align-items: flex-end;
     justify-content: center;
     width: 100%;
+    box-shadow: 0 1px 1px var(--text-color-light);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
-.mainpage__header h2 {
+.mainpage__header__dark {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 1px 1px var(--text-color-dark);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.mainpage__header h2, .mainpage__header__dark h2  {
     text-align: center;
     margin: 10px 0px;
 }
@@ -921,6 +941,32 @@
 
 /*----------------------------------------------------------------*/
 
+/* RECENTLY COMMENT */
+/**recently comment start**/
+.recently__comment__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recently__comment__item {
+    border: 1px solid var(--text-color-light);
+    border-radius: 5px;
+    margin-bottom: 14px;
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.recently__comment__item * {
+    margin: 5px;
+}
+
+.recently__comment__item {
+    text-overflow: ellipsis;
+}
+
+/**recently comment end**/
+
 /* USER DASHBOARD */
 /**dashboard start**/
 
@@ -1123,17 +1169,90 @@
 
 /* Cart */
 /**cart start **/
+.cart__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart__container h2 {
+    margin-top: 10px;
+}
+
+.cartitem__totalprice__forpayment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px 0px;
+    height: 100px;
+}
+
+.cart__novel__container {
+    display: flex;
+    border: 0.5px solid var(--text-color-light);
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 7px;
+}
+
+.cart__novel__container__dark {
+    display: flex;
+    border: 0.5px solid var(--text-color-dark);
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 7px;
+}
+
+.cartitem__info__container {
+    margin: 15px;
+}
+
+.cartitem__info__container img{
+    width: 15vw;
+    height: auto;
+}
+
+.cartitem__counter__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cartitem__otherinfo__container {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 .cartitem__price__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .cart__novel__container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart__novel__container__dark {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cartitem__counter__container {
+        align-items: center;
+    }
+    .cartitem__info__container img{
+        width: 25vw;
+        height: auto;
+    }
 }
 
 .cartitem__quantity__button {
     flex: 0.5;
     display: flex;
-    margin: 20px;
+    margin-right: 20px;
 }
 
 .cartitem__totalprice {
@@ -1190,3 +1309,41 @@
 /**cart end**/
 
 /*----------------------------------------------------------------*/
+
+/* Cart History */
+.carthistory__container {
+    margin-top: 15px;
+    background-color: var(--nav-color-light);
+    border-radius: 7px;
+}
+
+.carthistory__container__dark {
+    margin-top: 15px;
+    background-color: var(--nav-color-dark);
+    border-radius: 7px;
+}
+
+.carthistory__container h1, .carthistory__container__dark h1 {
+    margin: 10px;
+}
+
+.carthistory__body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin: 10px;
+}
+
+.carthistory__body__container {
+    margin-top: 20px;
+    border: 0.5px solid var(--text-color-light);
+    border-radius: 7px;
+    margin: 20px;
+}
+
+.carthistory__body__container__dark {
+    margin-top: 20px;
+    border: 0.5px solid var(--text-color-dark);
+    border-radius: 7px;
+    margin: 20px;
+}

@@ -1,22 +1,34 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 import ConfirmCartStatus from '../../../functionality/NovelButton/ConfirmCartStatus/ConfirmCartStatus';
+import { useDataLayerValue } from '../../../../DataLayer';
 
 function CartHistory() {
+    const [{ colortoggleState }, dispatch] = useDataLayerValue();
+
     const location = useLocation();
-    console.log("my user location", location);
+
+    let x1 = '';
+    let x2 = '';
+
+    if (colortoggleState) {
+        x1 = 'carthistory__body__container__dark';
+        x2 = 'carthistory__container__dark';
+    }
+    else {
+        x1 = 'carthistory__body__container';
+        x2 = 'carthistory__container';
+    }
 
     return (
-        <div className="carthistory__container">
-            {location.state.user && !location.state.user.usertype && <h1>Cart History</h1>}
-            {location.state.user && location.state.user.usertype && <h1>User's Pending Cart</h1>}
-            <div>
-                <hr></hr>
-                {location.state.user && !location.state.user.usertype && <h3>My Cart Status</h3>}
+        <div className={x2}>
+            {location.state.user && !location.state.user.usertype && <h1>Lịch sử mua hàng</h1>}
+            {location.state.user && location.state.user.usertype && <h1>Yêu cầu giao dịch từ người dùng</h1>}
+            <div className='carthistory__body'>
+                {location.state.user && !location.state.user.usertype && <h3>Giỏ hàng của tôi</h3>}
                 {location.state.user && !location.state.user.usertype && location.state.user.cart.map((item1, key1) => (
-                    <div key={key1}>
-                        <hr style={{ "margin": "20px 50px" }}></hr>
-                        <h4>Cart id: {item1._id}</h4>
+                    <div className={x1} key={key1}>
+                        <h4>Cart id: {key1 + 1}</h4>
                         <h4>Total price {item1.totalcartprice}</h4>
                         {item1.cartstatus ?
                             <h4>Da thanh toan</h4>
@@ -24,7 +36,7 @@ function CartHistory() {
                             <h4>Chua thanh toan</h4>}
 
                         {item1.usercart && item1.usercart.map((item2, key) => (
-                            <div className='novel__container' key={key}>
+                            <div className='' key={key}>
                                 <img src={`/uploads/${item2.novelImage}`} alt='...' />
                                 <h4>{item2.noveltitle}</h4>
                                 <h4>{item2.authorname}</h4>

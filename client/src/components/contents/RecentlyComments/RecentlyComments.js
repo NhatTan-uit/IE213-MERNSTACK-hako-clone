@@ -9,9 +9,9 @@ function RecentlyComments() {
     return (
         <div className="mainpage__recently__comment">
             {novels.map((novel, key1) => (
-                <div key={key1}>
+                <div className='recently__comment__container' key={key1}>
                     {novel.comments && novel.comments.slice(0).reverse().map((comment, key2) => (
-                        <div key={key2}>
+                        <div className='recently__comment__item' key={key2}>
                             <h4>{comment.crrusername}</h4>
                             <p>{comment.usercomment}</p>
                         </div>

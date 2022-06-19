@@ -3,13 +3,24 @@ import { useLocation } from 'react-router-dom'
 import CartHistory from './CartHistory/CartHistory';
 import ChangeUserPw from '../../functionality/ChangUserPw/ChangeUserPw'
 import UserInfo from './UserInfo/UserInfo';
+import { useDataLayerValue } from '../../../DataLayer';
 
 function DashBoard() {
+  const [{ colortoggleState }, dispatch] = useDataLayerValue();
+
   const location = useLocation();
-  console.log("user", location);
+
+  let x1 = '';
+
+  if (colortoggleState) {
+    x1 = 'mainpage__background__color__dark';
+  }
+  else {
+    x1 = 'mainpage__background__color';
+  }
 
   return (
-    <div className="mainpage__background__color">
+    <div className={x1}>
       <div className='mainpage'>
         <UserInfo user={{ currentuser: location.state.user, info: location.state.info }} />
         <div className="mainpage__container">
